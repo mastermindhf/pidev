@@ -1,0 +1,6 @@
+administration_homepage:
+    path:     /home
+    defaults: { _controller: AdministrationBundle:Default:index }
+administration_ajout:
+    path:     /ajout
+    defaults: { _controller: AdministrationBundle:Administration:Ajout }
