@@ -21,6 +21,7 @@ class RegistrationType extends AbstractType
                 ),
                 'multiple' => true,
                 'required' => true,
+                'expanded' =>true,
             )
         );
 
