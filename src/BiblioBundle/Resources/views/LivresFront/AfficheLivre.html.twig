@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+{% block content%}
+<br><br><br>
+<h1 class="title-sub mb-4">Liste des Livres</h1>
+
+    {% for cc in list %}
+
+            <div class="col-lg-3 col-sm-6 place-w3">
+            <td class="team-img">
+                <img height="300px" width="200px" style="background-image: url('{{ asset('images/' ~ cc.image) }}')">
+            </td><br>
+            <td class="sub-para">{{ cc.nom }}</td><br>
+            <td class="sub-para">{{ cc.auteur }}</td><br>
+            <td class="sub-para">{{ cc.quantite }}</td><br>
+            <td class="sub-para">{{ cc.description }}</td><br>
+
+
+            <td>
+                <a class="service-btn mt-4 btn" href="{{ path('ReservationLivre',{'idLivre':cc.idLivre}) }}">Empreinter</a>
+            </td>
+        <td>
+            <a class="service-btn mt-4 btn" href="{{ path('RendreLivre',{'idLivre':cc.idLivre}) }}"> Rendre </a>
+        </td>
+
+       </div>
+    {% endfor %}
+{% endblock %}

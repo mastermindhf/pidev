@@ -1,0 +1,8 @@
+{{ form_start(f) }}
+Nom:         {{ form_widget(f.nom) }}<br><br>
+Auteur:      {{ form_widget(f.auteur) }}<br><br>
+Quantité:    {{ form_widget(f.quantite) }}<br><br>
+Nb Empreinte:    {{ form_widget(f.nbpersonnes) }}<br><br>
+Description: {{ form_widget(f.description) }}<br><br>
+{{ form_widget(f.Ajout,{'label':'Modifier'}) }}
+{{ form_end(f) }}

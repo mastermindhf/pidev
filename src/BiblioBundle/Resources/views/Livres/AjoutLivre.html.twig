@@ -1,0 +1,11 @@
+{% extends "home.html.twig" %}
+{% block farouk %}
+    <br><br><br><br><br><br>
+    {{ form_start(f) }}
+    {{ form_widget(f.nom) }}</li><br><br>
+    {{ form_widget(f.auteur) }}<br><br>
+    {{ form_widget(f.quantite) }}<br><br>
+    {{ form_widget(f.description) }}<br><br>
+    {{ form_widget(f.Ajout) }}
+    {{ form_end(f) }}
+{% endblock %}

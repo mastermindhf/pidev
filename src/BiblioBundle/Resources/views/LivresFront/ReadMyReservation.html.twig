@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <center style="margin-bottom: 50px">
+        <div class="container" style="height: 200px; margin-top: 250px">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h2 class="header-w3ls" style="position: absolute; top: -200px; right: 400px;">
+                        Your Reservations
+                        <br>
+
+                        <br>
+
+                        <br><br>
+                        <br>
+                    </h2>
+
+                    {% for m in list %}
+                    <input type="submit"   name="cancel" id="cancel" value="Cancel">
+                    <div class="box">
+
+                        <div class="ticket"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                            <span class="airline">{{ m.id }}</span>
+                            <span class="airline">{{ m.id }}</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {% endfor %}
+
+    </center>
+    </div>
+    </div>
+    </div>
+
+
+{% endblock %}
+
+

@@ -1,0 +1,60 @@
+{% extends "home.html.twig" %}
+{% block farouk %}
+    <br><br><br>
+    <h1>Liste des Livres</h1>
+
+    {% for cc in list %}
+        <td class="card">
+            <div class="team-img">
+                <img height="350px" width="250px" style="background-image: url('{{ asset('images/' ~ cc.image) }}')">
+            </div>
+            <div>{{ cc.nom }}</div>
+            <div>{{ cc.auteur }}</div>
+            <div>{{ cc.quantite }}</div>
+            <div>{{ cc.description }}</div>
+
+
+            <div>
+                {% if error == '1' %}
+                    <a  id="btn" class="btn" href="{{ path('ReservationLivre',{'idLivre':cc.idLivre}) }}" >
+                        <button class="add-to-cart btn btn-default" type="button"><span class="fa fa-check"></span> Participate </button> </a>
+                    <script type="text/javascript" src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
+                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                    <script>
+                        $('#btn').click(function (e) {
+                            swal({
+                                title: "Congrat!",
+                                text: "You have successfully enrolled to this event",
+                                icon: "success",
+                                button: "Ok",
+                            });
+                        });
+
+                    </script>
+
+                    {% elseif error == '2' %}
+
+                    <a  id="btn" class="btn" href="{{ path('ReservationLivre',{'idLivre':cc.idLivre}) }}" >
+                        <button class="add-to-cart btn btn-default" type="button"><span class="fa fa-check"></span> Participate </button> </a>
+                    <script type="text/javascript" src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
+                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                    <script>
+                        $('#btn').click(function (e) {
+                            e.preventDefault();
+                            swal({
+                                title: "Error!",
+                                text: "You are already enrolled to this event",
+                                icon: "error",
+                                button: "Ok",
+                            });
+                        });
+
+                    </script>
+                {% endif %}
+                <button type="submit" class="btn-danger"><a href="{{ path('ReservationLivre',{'idLivre':cc.idLivre}) }}">Reserver</a></button>
+            </div>
+        </td>
+    {% endfor %}
+
+
+{% endblock %}

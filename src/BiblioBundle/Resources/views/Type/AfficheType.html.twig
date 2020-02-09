@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+{% block content %}
+<br><br>
+    <br><br>
+    <table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Libelle</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+
+    {% for cc in c %}
+        <tr>
+            <td>{{ cc.idL }}</td>
+            <td>{{ cc.libelle }}</td>
+            <td>
+                <a href="{{ path('Delete',{'id':cc.idL}) }}">Delete</a>
+            </td>
+            <td> <a href="{{ path('Update',{'id':cc.idL}) }}">Update</a>
+            </td>
+        </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}
