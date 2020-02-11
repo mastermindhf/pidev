@@ -1,0 +1,20 @@
+{% extends 'Back/backp.html.twig' %}
+{% block body %}
+<table  class="table table-striped">
+    <h1>Listes des réclamations</h1>
+    <tr><td>Message</td>
+        <td><b>Modifier</b></td>
+        <td><b>Supprimer</b></td>
+    </tr>
+
+
+    {% for cc in c %}
+        <tr>
+            <td>{{ cc.message}}</td>
+            <td><a href="{{ path('ModifierRec',{'id':cc.id}) }}"><i class="fa fa-edit" style="color:#2e6da4 " ></i></a></td>
+            <td><a href="{{ path('SupprimerRec',{'id':cc.id}) }}"><i class="fa fa-trash" style="color: #ff6c5f"></i></a></td>
+            <td><a href="{{ path('user_admin') }}">back</a></td>
+       </tr>
+    {% endfor %}
+</table>
+{% endblock %}

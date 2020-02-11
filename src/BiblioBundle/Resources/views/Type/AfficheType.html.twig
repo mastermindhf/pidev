@@ -1,0 +1,25 @@
+{% extends 'Back/back.html.twig' %}
+{% block body %}
+    <table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Libelle</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+
+    {% for cc in c %}
+        <tr>
+            <td>{{ cc.idL }}</td>
+            <td>{{ cc.libelle }}</td>
+            <td>
+               <center> <a class="fa fa-trash" style="color: #ff6c5f" href="{{ path('Delete',{'id':cc.idL}) }}"></a></center>
+            </td>
+            <td>
+                <center><a class="fa fa-edit" style="color:#2e6da4 " href="{{ path('Update',{'id':cc.idL}) }}"></a></center>
+            </td>
+        </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

@@ -1,0 +1,16 @@
+rec_homepage:
+    path:     /index
+    defaults: { _controller: RecBundle:Default:index }
+_ajout:
+    path:     /Ajout
+    defaults: { _controller: RecBundle:Rec:Ajout }
+_affiche:
+    path:     /Affiche
+    defaults: { _controller: RecBundle:Rec:Affiche }
+ModifierRec:
+    path:     /ModifierRec/{id}
+    defaults: { _controller: RecBundle:Rec:ModifierRec }
+
+SupprimerRec:
+    path:     /SupprimerRec/{id}
+    defaults: { _controller: RecBundle:Rec:SupprimerRec }

@@ -1,0 +1,51 @@
+index:
+  path:     /index
+  defaults: { _controller: CoursBundle:Default:index }
+
+AjouterCours:
+  path:     /AjouterCours
+  defaults: { _controller: CoursBundle:Cours:AjouterCours }
+
+AfficherCours:
+  path:     /AfficherCours
+  defaults: { _controller: CoursBundle:Cours:AfficherCours }
+
+ModifierCours:
+  path:     /ModifierCours/{id}
+  defaults: { _controller: CoursBundle:Cours:ModifierCours }
+
+SupprimerCours:
+  path:     /SupprimerCours/{id}
+  defaults: { _controller: CoursBundle:Cours:SupprimerCours }
+
+AfficherCoursF:
+  path:     /AfficherCoursF
+  defaults: { _controller: CoursBundle:Cours:AfficherCoursF }
+
+AjouterQuizz:
+  path:     /AjouterQuizz
+  defaults: { _controller: CoursBundle:Cours:AjouterQuizz }
+
+AfficherQuizz:
+  path:     /AfficherQuizz
+  defaults: { _controller: CoursBundle:Cours:AfficherQuizz }
+
+ModifierQuizz:
+  path:     /ModifierQuizz/{id}
+  defaults: { _controller: CoursBundle:Cours:ModifierQuizz }
+
+SupprimerQuizz:
+  path:     /SupprimerQuizz/{id}
+  defaults: { _controller: CoursBundle:Cours:SupprimerQuizz }
+
+redirect:
+  path:     /redirect
+  defaults: { _controller: CoursBundle:Cours:redirect }
+
+AfficherQuizzByCours:
+  path:     /AfficherQuizzByCours/{cours}
+  defaults: { _controller: CoursBundle:Cours:AfficherQuizzByCours }
+
+user_admin:
+  path:     /access/admin
+  defaults: { _controller: UserBundle:Default:admin }

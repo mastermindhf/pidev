@@ -1,0 +1,22 @@
+{% extends 'Front/home.html.twig' %}
+{% block body %}
+    <h3 class="text-wh font-weight-bold"><span>Cours</span></h3>
+    <table class="table table-striped">
+        <tr align="center"  >
+
+            <td><b>Libelle</b></td>
+            <td><b>Niveau</b></td>
+
+
+        </tr>
+        {% for c in Cours %}
+            <tr align=" center" >
+
+                <td>{{c.Libelle}}</td>
+                <td>{{c.Niveau}}</td>
+
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
