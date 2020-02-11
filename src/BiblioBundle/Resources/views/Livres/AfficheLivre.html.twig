@@ -1,0 +1,38 @@
+{% extends 'Back/back.html.twig' %}
+{% block body %}
+    <h1>Liste des Livres</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Auteur</th>
+
+            <th>Nb d'emprunte</th>
+            <th>quantite</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+
+        {% for cc in list %}
+            <tr>
+                <td scope="row">{{ cc.idLivre }}</td>
+                <td>{{ cc.nom }}</td>
+                <td>{{ cc.auteur }}</td>
+                <td>{{ cc.nbpersonnes }}</td>
+                <td>{{ cc.quantite }}</td>
+                <td>{{ cc.description }}</td>
+                <td class="fa-image" height="200px" width="300px" style="background-image: url('{{ asset('images/' ~ cc.image) }}')">
+
+                <td>
+                    <center><a class="fa fa-trash" style="color: #ff6c5f" href="{{ path('DeleteLivre',{'id':cc.idLivre}) }}"></a></center>
+                </td>
+                <td>
+                    <center><a class="fa fa-edit" style="color:#2e6da4 " href="{{ path('UpdateLivre',{'id':cc.idLivre}) }}"></a></center>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}
