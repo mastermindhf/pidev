@@ -1,14 +1,14 @@
 suivi_ens:
     resource: "@SuiviEnsBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /suivi
 
 rec:
     resource: "@RecBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /rec
 
 cours:
     resource: "@CoursBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /cours
 
 administration:
     resource: "@AdministrationBundle/Resources/config/routing.yml"
