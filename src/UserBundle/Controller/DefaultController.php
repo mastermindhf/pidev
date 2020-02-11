@@ -24,13 +24,17 @@ class DefaultController extends Controller
                 case "ENSEIGNANT":
                     return $this->redirect('access/enseignant');
                     break;
+                    case "CLUB":
+                    return $this->redirect('access/club');
+                    break;
             }
         }
         catch (\Throwable $e)
         {
-            return $this->redirect('http://localhost/pidev/web/app_dev.php/login');
+            return $this->redirect('http://localhost/Test/web/app_dev.php/login');
 
         };
+
 
     }
 
@@ -64,6 +68,16 @@ class DefaultController extends Controller
     public function enseignantAction()
     {
         return $this->render('@User/Default/enseignant.html.twig');
+
+    }
+    public function clubAction()
+    {
+        return $this->render('@User/Default/club.html.twig');
+
+    }
+    public function homeAction()
+    {
+        return $this->render('@User/Default/home.html.twig');
 
     }
 
