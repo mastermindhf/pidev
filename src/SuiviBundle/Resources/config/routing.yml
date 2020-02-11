@@ -1,0 +1,22 @@
+suivi_matiere:
+    resource: "@SuiviBundle/Resources/config/routing/matiere.yml"
+    prefix:   /matiere
+
+suivi_homepage:
+    path:     /
+    defaults: { _controller: SuiviBundle:Default:index }
+afficherc:
+    path:     /AfficherC
+    defaults: { _controller: SuiviBundle:Suivi:AfficherC }
+ajoutla:
+    path:     /AjoutLA/{id}
+    defaults: { _controller: SuiviBundle:Suivi:AjoutLA }
+ajoutp:
+    path:     /AjoutP/{ide}/{idc}
+    defaults: { _controller: SuiviBundle:Suivi:AjoutP }
+ajouta:
+        path:     /AjoutA/{ide}/{idc}
+        defaults: { _controller: SuiviBundle:Suivi:AjoutA }
+affichela:
+    path:     /Affichela/{id}
+    defaults: { _controller: SuiviBundle:Suivi:AfficherLA }

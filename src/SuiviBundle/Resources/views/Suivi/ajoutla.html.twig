@@ -1,0 +1,27 @@
+Classe: {{ cl.libelle }}
+<table border="1">
+    <tr>
+
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Etat</th>
+
+
+    </tr>
+
+    {% for ee in e %}
+
+        <tr>
+
+            <td>{{ ee.nom }}</td>
+            <td>{{ ee.prenom }}</td>
+
+            <td>
+        <a href="{{ path('ajouta', {'ide': ee.id,'idc':cl.id }) }}">&nbsp;Absent</a> </td>
+
+
+        </tr>
+
+    {% endfor %}
+
+</table>

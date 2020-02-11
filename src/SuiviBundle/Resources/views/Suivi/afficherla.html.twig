@@ -1,0 +1,23 @@
+
+<br>
+<table border="1">
+    <tr>
+
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Date</th>
+        <th>Etat</th>
+    </tr>
+    {% for cc in la %}
+        <tr>
+            <td>{{ cc.eleve.nom}}</td>
+            <td>{{ cc.eleve.prenom }}</td>
+            <td>{{ cc.date|date }}</td>
+            <td>{{ cc.etat }}</td>
+
+
+
+        </tr>
+    {% endfor %}
+
+</table>

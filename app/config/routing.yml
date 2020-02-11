@@ -1,3 +1,11 @@
+suivi:
+    resource: "@SuiviBundle/Resources/config/routing.yml"
+    prefix:   /s
+
+cours:
+    resource: "@CoursBundle/Resources/config/routing.yml"
+    prefix:   /
+
 administration:
     resource: "@AdministrationBundle/Resources/config/routing.yml"
     prefix:   /admin
