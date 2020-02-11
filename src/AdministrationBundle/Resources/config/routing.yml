@@ -4,3 +4,6 @@ administration_homepage:
 administration_ajout:
     path:     /ajout
     defaults: { _controller: AdministrationBundle:Administration:Ajout }
+session:
+    path:     /session
+    defaults: { _controller: AdministrationBundle:Administration:session }

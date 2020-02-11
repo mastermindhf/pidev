@@ -29,5 +29,11 @@ class AdministrationController extends Controller
         return $this->render('@Administration/Default/ajout.html.twig', array('f' => $form1));
 
     }
+    public function sessionAction()
+    {
+        $user = $this->container->get('security.token_storage')->getToken()->getUser()->getnom();
+
+        return $this->render('@Administration/Default/session.html.twig', array('id'=>$user));
+    }
 
 }
