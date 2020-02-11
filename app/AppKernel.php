@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new CoursBundle\CoursBundle(),
             new RecBundle\RecBundle(),
             new BiblioBundle\BiblioBundle(),
+            new SuiviEnsBundle\SuiviEnsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

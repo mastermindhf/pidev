@@ -1,3 +1,7 @@
+suivi_ens:
+    resource: "@SuiviEnsBundle/Resources/config/routing.yml"
+    prefix:   /
+
 rec:
     resource: "@RecBundle/Resources/config/routing.yml"
     prefix:   /

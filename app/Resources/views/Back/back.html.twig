@@ -20,11 +20,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         function hideURLbar() {
             window.scrollTo(0, 1);
         } </script>
-    <style>
-        input{
-            border-radius: 5px;
-        }
-    </style>
+<style>
+    input{
+        border-radius: 5px;
+    }
+</style>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('Back/css/bootstrap.css') }}" rel='stylesheet' type='text/css'/>
 
@@ -134,8 +134,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <h1><a class="navbar-brand" href="index.html"><span class="fa fa-area-chart"></span> Glance<span
-                                    class="dashboard_text">Design dashboard</span></a></h1>
+                    <h1><a class="navbar-brand" href="index.html"><span class="fa fa-area-chart"></span> SchoolNet<span
+                                    class="dashboard_text">SchoolNet</span></a></h1>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="sidebar-menu">
@@ -155,35 +155,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <li><a href="{{path('AjouterCours')}}"><i class="fa fa-external-link"></i> Ajouter Cours</a></li>
                                 <li><a href="{{ path('AfficherCours') }}"><i class="fa fa-external-link"></i> Lister Les Cours</a></li>
                             </ul>
-
                         </li>
-
-
-
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-edit"></i> <span>Reclamation Parents</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="forms.html"><i class="fa fa-angle-right"></i> Afficher Reclamation</a></li>
-                                <li><a href="validation.html"><i class="fa fa-angle-right"></i> Form Validations</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-question-circle"></i>
-                                <span>Quizz</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="{{path('AjouterQuizz')}}"><i class="fa fa-external-link"></i> Ajouter Quizz</a></li>
-                                <li><a href="{{ path('AfficherQuizz') }}"><i class="fa fa-external-link"></i> Lister Les Quizz</a></li>
-                            </ul>
-                        </li>
-
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-book"></i>
@@ -198,18 +170,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             </ul>
 
                         </li>
-
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-edit"></i> <span>Reclamation Parents</span>
+                                <i class="fa fa-question-circle"></i>
+                                <span>Quizz</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="forms.html"><i class="fa fa-angle-right"></i> Afficher Reclamation</a></li>
-                                <li><a href="validation.html"><i class="fa fa-angle-right"></i> Form Validations</a>
-                                </li>
+                                <li><a href="{{path('AjouterQuizz')}}"><i class="fa fa-external-link"></i> Ajouter Quizz</a></li>
+                                <li><a href="{{ path('AfficherQuizz') }}"><i class="fa fa-external-link"></i> Lister Les Quizz</a></li>
                             </ul>
                         </li>
+
                         <li class="treeview">
                             <a href="charts.html">
                                 <i class="fa fa-pie-chart"></i>
@@ -221,7 +193,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-laptop"></i>
-                                <span>UI Elements</span>
+                                <span>Event</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
@@ -231,30 +203,26 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <li><a href="typography.html"><i class="fa fa-angle-right"></i> Typography</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="widgets.html">
-                                <i class="fa fa-th"></i> <span>Widgets</span>
-                                <small class="label pull-right label-info">08</small>
-                            </a>
-                        </li>
+
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-edit"></i> <span>Forms</span>
+                                <i class="fa fa-edit"></i> <span>Reclamation Parents</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="forms.html"><i class="fa fa-angle-right"></i> General Forms</a></li>
-                                <li><a href="validation.html"><i class="fa fa-angle-right"></i> Form Validations</a>
+                                <li><a href="{{ path('_affiche') }}"><i class="fa fa-angle-right"></i> Afficher Reclamation</a></li>
+
                                 </li>
                             </ul>
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-table"></i> <span>Tables</span>
+                                <i class="fa fa-table"></i> <span>SuiviEnseignant</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="tables.html"><i class="fa fa-angle-right"></i> Simple tables</a></li>
+                                <li><a href="{{path('suivi_ens')}}"><i class="fa fa-angle-right"></i> Ajouter_ABS_PRES</a></li>
+                                <li><a href="{{path('affiche_ens')}}"><i class="fa fa-angle-right"></i> Afficher Listes de présence</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -478,8 +446,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <div class="profile_img">
                                 <span class="prfil-img"><img src="{{ asset('Back/images/1.jpg') }}" alt=""> </span>
                                 <div class="user-name">
-                                    <p></p>
-                                    <span></span>
+                                    <p>Admin Name</p>
+                                    <span>Administrator</span>
                                 </div>
                                 <i class="fa fa-angle-down lnr"></i>
                                 <i class="fa fa-angle-up lnr"></i>
@@ -490,7 +458,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                             <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
                             <li><a href="#"><i class="fa fa-suitcase"></i> Profile</a></li>
-                            <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                            <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -559,6 +527,22 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 
 <!-- Bootstrap Core JavaScript -->
+<script>
+    $(document).on({
+        "contextmenu": function(e) {
+            console.log("ctx menu button:", e.which);
+
+            // Stop the context menu
+            e.preventDefault();
+        },
+        "mousedown": function(e) {
+            console.log("normal mouse down:", e.which);
+        },
+        "mouseup": function(e) {
+            console.log("normal mouse up:", e.which);
+        }
+    });
+</script>
 <script src="{{ asset('Back/js/bootstrap.js') }}"></script>
 <!-- //Bootstrap Core JavaScript -->
 </body>
