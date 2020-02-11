@@ -20,3 +20,31 @@ ajouta:
 affichela:
     path:     /Affichela/{id}
     defaults: { _controller: SuiviBundle:Suivi:AfficherLA }
+
+Delete:
+    path:   /Delete/{id}
+    defaults: {_controller: SuiviBundle:Suivi:Delete}
+
+Update:
+    path:   /Update/{id}
+    defaults: {_controller: SuiviBundle:Suivi:Update}
+
+ajoutn:
+    path:     /AjoutN/{id}/{idc}
+    defaults: { _controller: SuiviBundle:Note:AjoutN }
+
+affichernc:
+  path:     /Affichernc/{idc}
+  defaults: { _controller: SuiviBundle:Note:Affichernc }
+
+afficherne:
+      path:     /Afficherne/{ide}
+      defaults: { _controller: SuiviBundle:Note:Afficherne }
+
+Deleten:
+    path:   /Deleten/{id}
+    defaults: {_controller: SuiviBundle:Note:Deleten}
+
+Updaten:
+    path:   /Updaten/{id}
+    defaults: {_controller: SuiviBundle:Note:Updaten}

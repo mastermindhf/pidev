@@ -1,8 +1,10 @@
 {% for cc in cl   %}
 
-    {{ cc.libelle }} : <a href="{{ path('ajoutla', {'id': cc.id }) }}">Enregistrer absence</a>
+    {{ cc.libelle }} : <a href="{{ path('ajoutla', {'id': cc.id }) }}">Afficher liste Eleves</a>
     <a href="{{ path('affichela', {'id': cc.id }) }}">Afficher les cas d'absence</a>
+    <a href="{{ path('affichernc', {'idc': cc.id }) }}">Afficher les notes</a>
     <br>
+
 
 
 {% endfor %}

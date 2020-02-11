@@ -1,0 +1,25 @@
+<table border="1">
+    <tr>
+
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Matiere</th>
+        <th>Note</th>
+        <th>Supprimer</th>
+        <th>Modifier</th>
+    </tr>
+    {% for cc in n %}
+        <tr>
+            <td>{{ cc.eleve.nom}}</td>
+            <td>{{ cc.eleve.prenom }}</td>
+            <td>{{ cc.matiere.libelle}}</td>
+            <td>{{ cc.valeur}}</td>
+            <td><a href="{{ path('Deleten', {'id': cc.id }) }}">Supprimer</a></td>
+            <td><a href="{{ path('Updaten', {'id': cc.id }) }}">Modifier</a></td>
+
+
+
+        </tr>
+    {% endfor %}
+
+</table>

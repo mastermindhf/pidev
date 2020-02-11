@@ -7,6 +7,8 @@
         <th>Prenom</th>
         <th>Date</th>
         <th>Etat</th>
+        <th>Supprimer</th>
+        <th>Modifier</th>
     </tr>
     {% for cc in la %}
         <tr>
@@ -14,6 +16,8 @@
             <td>{{ cc.eleve.prenom }}</td>
             <td>{{ cc.date|date }}</td>
             <td>{{ cc.etat }}</td>
+            <td><a href="{{ path('Delete', {'id': cc.id }) }}">Supprimer</a></td>
+            <td><a href="{{ path('Update', {'id': cc.id }) }}">Modifier</a></td>
 
 
 

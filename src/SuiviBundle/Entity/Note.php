@@ -50,12 +50,34 @@ class Note
 
     private $matiere;
     /**
-     * @ORM\ManyToOne(targetEntity="eleve")
-     * @ORM\JoinColumn(name="id_e", referencedColumnName="id")
-     */
+ * @ORM\ManyToOne(targetEntity="eleve")
+ * @ORM\JoinColumn(name="id_e", referencedColumnName="id")
+ */
 
     private $eleve;
 
+    /**
+     * @return mixed
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+    /**
+     * @param mixed $classe
+     */
+    public function setClasse($classe)
+    {
+        $this->classe = $classe;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="classe")
+     * @ORM\JoinColumn(name="id_c", referencedColumnName="id")
+     */
+
+    private $classe;
     /**
      * @return mixed
      */

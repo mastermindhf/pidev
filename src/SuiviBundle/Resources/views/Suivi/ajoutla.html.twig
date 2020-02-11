@@ -4,7 +4,10 @@ Classe: {{ cl.libelle }}
 
         <th>Nom</th>
         <th>Prenom</th>
-        <th>Etat</th>
+        <th>Absence</th>
+        <th>Noter</th>
+        <th>Afficher notes</th>
+
 
 
     </tr>
@@ -17,7 +20,11 @@ Classe: {{ cl.libelle }}
             <td>{{ ee.prenom }}</td>
 
             <td>
-        <a href="{{ path('ajouta', {'ide': ee.id,'idc':cl.id }) }}">&nbsp;Absent</a> </td>
+        <a href="{{ path('ajouta', {'ide': ee.id,'idc':cl.id }) }}">&nbsp;Marquer Absent</a> </td>
+            <td>
+                <a href="{{ path('ajoutn', {'id': ee.id,'idc': cl.id}) }}">&nbsp;Noter</a> </td>
+            <td>
+                <a href="{{ path('afficherne', {'ide': ee.id }) }}">&nbsp;Notes</a> </td>
 
 
         </tr>

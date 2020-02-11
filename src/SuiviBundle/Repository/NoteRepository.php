@@ -10,4 +10,16 @@ namespace SuiviBundle\Repository;
  */
 class NoteRepository extends \Doctrine\ORM\EntityRepository
 {
+    function findc($id){
+        $query=$this->getEntityManager()->createQuery("select n from SuiviBundle:Note n where n.classe=:idc ")
+            ->setParameter('idc',$id);
+        return $query->getResult();
+
+    }
+    function finde($id){
+        $query=$this->getEntityManager()->createQuery("select n from SuiviBundle:Note n where n.eleve=:ide ")
+            ->setParameter('ide',$id);
+        return $query->getResult();
+
+    }
 }

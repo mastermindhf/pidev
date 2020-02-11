@@ -31,32 +31,54 @@ class SuiviController extends Controller
         $la=new ListeAppel();
         $eleve1=$this->getDoctrine()->getRepository(Eleve::class)->Find($ide);
         $classe=$this->getDoctrine()->getRepository(Classe::class)->find($idc);
-
+        $Form=$this->createForm(ListeAppelType::class,$la);
+        $Form->handleRequest($request);
         $em=$this->getDoctrine()->getManager();
+        if($Form->isSubmitted() && $Form->isValid()) {
 
+                $la->setEleve($eleve1);
+                $la->setClasse($classe);
+                $la->setEtat('Absent');
+                $em->persist($la);
+                $em->flush();
 
-            $la->setEleve($eleve1);
-            $la->setClasse($classe);
-            $la->setEtat('Absent');
-            $la->setDate(new \Datetime('now'));
-            $em->persist($la);
-            $em->flush();
+                return $this->redirectToRoute('affichela', array('id' => $idc));
 
-            return $this->redirectToRoute('affichela',array('id'=>$idc));
-
-
+            }
+            return $this->render('@Suivi/Suivi/ajoutabsence.html.twig',array('f'=>$Form->createView()));
 
 
     }
     function AfficherLAAction($id){
 
         $la=$this->getDoctrine()->getRepository(ListeAppel::class)->findC($id);
-
-
-
         return $this->render('@Suivi/Suivi/afficherla.html.twig',array('la'=>$la));
+    }
 
+    function DeleteAction($id){
+        $em=$this->getDoctrine()->getManager();
+        $la = $em->getRepository(ListeAppel::class)->find($id);
 
+        $em->remove($la);
+        $em->flush();
+        $cl=$la->getClasse();
+        $idc=$cl->getId();
+        return $this->redirectToRoute('affichela',array('id'=>$idc));
+    }
+    function UpdateAction(Request $request,$id){
+
+        $em=$this->getDoctrine()->getManager();
+        $la = $em->getRepository(ListeAppel::class)->find($id);
+        $Form=$this->createForm(ListeAppelType::class,$la);
+        $Form->handleRequest($request);
+        if($Form->isSubmitted() && $Form->isValid()) {
+            $em->flush();
+            $cl=$la->getClasse();
+            $idc=$cl->getId();
+            return $this->redirectToRoute('affichela',array('id'=>$idc));
+        }
+
+        return $this->render('@Suivi/Suivi/update.html.twig',array('f'=>$Form->createView()));
     }
 
 }
