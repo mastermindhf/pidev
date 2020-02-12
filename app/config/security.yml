@@ -8,6 +8,7 @@ security:
         PARENT: ROLE_PARENT
         ELEVE: ROLE_ELEVE
         ENSEIGNANT: ROLE_ENSEIGNANT
+        CLUB: ROLE_CLUB
 
     providers:
         fos_userbundle:
@@ -30,6 +31,7 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/access/admin, role: ROLE_ADMIN }
-        - { path: ^/access/parent, role: ROLE_PARENT}
+        - { path: ^/access/parentEleve, role: ROLE_PARENT}
         - { path: ^/access/eleve, role: ROLE_ELEVE }
         - { path: ^/access/ensaignant, role: ROLE_ENSEIGNANT }
+        - { path: ^/access/club, role: ROLE_CLUB }

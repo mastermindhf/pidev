@@ -17,6 +17,7 @@ class RegistrationType extends AbstractType
                     'Parent'   => 'Parent',
                     'Eleve'   => 'Eleve',
                     'Enseignant'   => 'Enseignant',
+                    'Club'   => 'Club',
                     'Admin'   => 'Admin',
                 ),
                 'multiple' => true,
