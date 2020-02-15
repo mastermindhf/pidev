@@ -2,6 +2,7 @@
 
 namespace SuiviBundle\Form;
 
+use Gregwar\CaptchaBundle\Type\CaptchaType;
 use SuiviBundle\Entity\Matiere;
 use SuiviBundle\Entity\Note;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -28,7 +29,7 @@ class NoteType extends AbstractType
             ]
 
 
-        )->add('Ajouter',SubmitType::class,['attr'=>['formnovalidate'=>'formnovalidate']]);;
+        )->add('captcha', CaptchaType::class)->add('Ajouter',SubmitType::class,['attr'=>['formnovalidate'=>'formnovalidate']]);;
     }/**
      * {@inheritdoc}
      */

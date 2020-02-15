@@ -1,6 +1,8 @@
+{% extends 'Back/back.html.twig' %}
+{% block body %}
 Classe: {{ cl.libelle }}
-<table border="1">
-    <tr>
+<table class="table table-striped">
+    <tr align="center">
 
         <th>Nom</th>
         <th>Prenom</th>
@@ -32,3 +34,4 @@ Classe: {{ cl.libelle }}
     {% endfor %}
 
 </table>
+{% endblock %}

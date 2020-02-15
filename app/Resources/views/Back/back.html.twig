@@ -179,14 +179,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-laptop"></i>
-                                <span>Event</span>
+                                <span>Suivi</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="general.html"><i class="fa fa-angle-right"></i> General</a></li>
-                                <li><a href="icons.html"><i class="fa fa-angle-right"></i> Icons</a></li>
-                                <li><a href="buttons.html"><i class="fa fa-angle-right"></i> Buttons</a></li>
-                                <li><a href="typography.html"><i class="fa fa-angle-right"></i> Typography</a></li>
+                                <li><a href="{{ path('afficherc') }}"><i class="fa fa-angle-right"></i> Afficher Classes</a></li>
+                                <li><a href="{{ path('matiere_index') }}"><i class="fa fa-angle-right"></i> Matieres</a></li>
+
                             </ul>
                         </li>
                         <li>
@@ -535,5 +534,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 </script>
 <script src="{{ asset('Back/js/bootstrap.js') }}"></script>
 <!-- //Bootstrap Core JavaScript -->
+{% block js %}
+{% endblock %}
 </body>
 </html>

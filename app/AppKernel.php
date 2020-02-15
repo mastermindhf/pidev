@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new AdministrationBundle\AdministrationBundle(),
             new CoursBundle\CoursBundle(),
             new SuiviBundle\SuiviBundle(),
+            new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

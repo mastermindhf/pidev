@@ -1,7 +1,7 @@
-
-<br>
-<table border="1">
-    <tr>
+{% extends 'Back/back.html.twig' %}
+{% block body %}
+<table class="table table-striped">
+    <tr align="center">
 
         <th>Nom</th>
         <th>Prenom</th>
@@ -11,13 +11,13 @@
         <th>Modifier</th>
     </tr>
     {% for cc in la %}
-        <tr>
+        <tr align="center">
             <td>{{ cc.eleve.nom}}</td>
             <td>{{ cc.eleve.prenom }}</td>
             <td>{{ cc.date|date }}</td>
             <td>{{ cc.etat }}</td>
-            <td><a href="{{ path('Delete', {'id': cc.id }) }}">Supprimer</a></td>
-            <td><a href="{{ path('Update', {'id': cc.id }) }}">Modifier</a></td>
+            <td><a href="{{ path('Delete', {'id': cc.id }) }}"><i class="fa fa-trash" style="color: #ff6c5f"></a></td>
+            <td><a href="{{ path('Update', {'id': cc.id }) }}"><i class="fa fa-edit" style="color:#2e6da4 " ></a></td>
 
 
 
@@ -25,3 +25,4 @@
     {% endfor %}
 
 </table>
+{% endblock %}

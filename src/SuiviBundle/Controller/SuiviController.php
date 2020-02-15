@@ -45,7 +45,7 @@ class SuiviController extends Controller
                 return $this->redirectToRoute('affichela', array('id' => $idc));
 
             }
-            return $this->render('@Suivi/Suivi/ajoutabsence.html.twig',array('f'=>$Form->createView()));
+            return $this->render('@Suivi/Suivi/ajoutabsence.html.twig',array('form'=>$Form->createView()));
 
 
     }
@@ -78,7 +78,7 @@ class SuiviController extends Controller
             return $this->redirectToRoute('affichela',array('id'=>$idc));
         }
 
-        return $this->render('@Suivi/Suivi/update.html.twig',array('f'=>$Form->createView()));
+        return $this->render('@Suivi/Suivi/update.html.twig',array('form'=>$Form->createView()));
     }
 
 }

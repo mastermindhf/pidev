@@ -4,6 +4,7 @@ namespace SuiviBundle\Controller;
 
 use SuiviBundle\Entity\Classe;
 use SuiviBundle\Entity\Eleve;
+use SuiviBundle\Entity\Matiere;
 use SuiviBundle\Entity\Note;
 use SuiviBundle\Form\ListeAppelType;
 use SuiviBundle\Form\NoteType;
@@ -32,19 +33,23 @@ class NoteController extends Controller
             return $this->redirectToRoute('afficherne', array('ide' => $ide));
 
         }
-        return $this->render('@Suivi/Suivi/ajoutnote.html.twig',array('f'=>$Form->createView()));
+        return $this->render('@Suivi/Suivi/ajoutnote.html.twig',array('form'=>$Form->createView()));
 
 
     }
     function AfficherncAction($idc){
 
+        $em=$this->getDoctrine()->getManager();
         $n=$this->getDoctrine()->getRepository(Note::class)->findc($idc);
-        return $this->render('@Suivi/Suivi/affichernote.html.twig',array('n'=>$n));
+        $mats=$em->getRepository(Matiere::class)->findAll();
+        return $this->render('@Suivi/Suivi/affichernote.html.twig',array('n'=>$n,'mats'=>$mats));
     }
     function AfficherneAction($ide){
+        $em=$this->getDoctrine()->getManager();
 
+        $mats=$em->getRepository(Matiere::class)->findAll();
         $n=$this->getDoctrine()->getRepository(Note::class)->finde($ide);
-        return $this->render('@Suivi/Suivi/affichernote.html.twig',array('n'=>$n));
+        return $this->render('@Suivi/Suivi/affichernote.html.twig',array('n'=>$n,'mats'=>$mats));
     }
 
     function DeletenAction($id){
@@ -70,7 +75,7 @@ class NoteController extends Controller
             return $this->redirectToRoute('affichernc',array('idc'=>$idc));
         }
 
-        return $this->render('@Suivi/Suivi/Updaten.html.twig',array('f'=>$Form->createView()));
+        return $this->render('@Suivi/Suivi/Updaten.html.twig',array('form'=>$Form->createView()));
     }
 
 }

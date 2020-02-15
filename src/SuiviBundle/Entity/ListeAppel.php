@@ -3,6 +3,7 @@
 namespace SuiviBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ListeAppel
@@ -30,6 +31,7 @@ class ListeAppel
 
     /**
      * @var \DateTime
+     *@Assert\LessThanOrEqual("today")
      *
      * @ORM\Column(name="date", type="datetime")
      */

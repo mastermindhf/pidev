@@ -1,12 +1,12 @@
-{% extends 'base.html.twig' %}
+{% extends 'Back/back.html.twig' %}
 
 {% block body %}
     <h1>Matieres list</h1>
 
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
+
                 <th>Libelle</th>
                 <th>Actions</th>
             </tr>
@@ -14,7 +14,7 @@
         <tbody>
         {% for matiere in matieres %}
             <tr>
-                <td><a href="{{ path('matiere_show', { 'id': matiere.id }) }}">{{ matiere.id }}</a></td>
+
                 <td>{{ matiere.libelle }}</td>
                 <td>
                     <ul>

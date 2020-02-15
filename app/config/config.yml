@@ -86,3 +86,5 @@ fos_user:
     registration:
         form:
             type: UserBundle\Form\RegistrationType
+
+gregwar_captcha: ~
