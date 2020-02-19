@@ -6,10 +6,13 @@ use BiblioBundle\Entity\Reservationlivre;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use BiblioBundle\Entity\Livres;
 use BiblioBundle\Form\LivresType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 use BiblioBundle\Repository\ReservationlivreRepository;
+use UserBundle\Entity\User;
 
 class LivresController extends Controller
 {
@@ -24,7 +27,7 @@ class LivresController extends Controller
                 $livre=new Livres();
                 //1-b:create form
                 $form=$this->createForm(LivresType::class,$livre)
-                    ->add('image',FileType::class,array('label'=>'insert image'));
+                    ->add('image',FileType::class,array('label'=>'Image'));
                 //2-les données
                 $form=$form->handleRequest($request);
                 $nom=$livre->getNom();
@@ -47,8 +50,10 @@ class LivresController extends Controller
                     $livre->setImage($fileName);
                     //3-cnx avec BD
                     $em=$this->getDoctrine()->getManager();
+                    $livre->setNbpersonnes(0);
                     $em->persist($livre);
                     $em->flush();
+
                     return $this->redirectToRoute('AfficheLivre');
                 }
 
@@ -70,19 +75,15 @@ class LivresController extends Controller
     }
 
 
+
     public function AfficheLivreAction(Request $request)
     {
         //les donnée de bdd
         $livre=$this->getDoctrine()
             ->getRepository(Livres::class)
             ->findAll();
-        //pagination
-       /* $pagination  = $this->get('knp_paginator')->paginate(
-            $livre,
-            $request->query->get('page', 1) le numéro de la page à afficher,
-            3 nbre d'éléments par page*/
-        //affichage
-        return $this->render("@Biblio/Livres/AfficheLivre.html.twig", array("list"=>$livre));
+
+           return $this->render("@Biblio/Livres/AfficheLivre.html.twig", array("list"=>$livre));
     }
 
     public function AfficheLivreFAction(Request $request)
@@ -91,12 +92,7 @@ class LivresController extends Controller
         $livre=$this->getDoctrine()
             ->getRepository(Livres::class)
             ->findAll();
-        //pagination
-        /* $pagination  = $this->get('knp_paginator')->paginate(
-             $livre,
-             $request->query->get('page', 1) le numéro de la page à afficher,
-             3 nbre d'éléments par page*/
-        //affichage
+
         return $this->render("@Biblio/LivresFront/AfficheLivre.html.twig", array("list"=>$livre));
     }
 
@@ -121,16 +117,16 @@ class LivresController extends Controller
                 return $this->render('@Biblio/Livres/UpdateLivre.html.twig',
                     array('f' => $Form->createView()));
             }
-                        else
-                            {
-                                return $this->redirectToRoute('fos_user_security_login');
-                            }
-                        }
             else
             {
                 return $this->redirectToRoute('fos_user_security_login');
             }
         }
+        else
+        {
+            return $this->redirectToRoute('fos_user_security_login');
+        }
+    }
 
     function DeleteLivreAction($id){
         $em=$this->getDoctrine()->getManager();
@@ -238,13 +234,13 @@ class LivresController extends Controller
 
                     $em->persist($reservation);
                     $em->flush();
-                    return $this->redirectToRoute('AfficheLivre');
+                    return $this->redirectToRoute('AfficheLivreF');
                 }
 
                 else
                 {
                     $error = 2;
-                    return $this->redirectToRoute('AfficheLivre', array(
+                    return $this->redirectToRoute('AfficheLivreF', array(
                         'error' => $error
                     ));
                 }
@@ -293,14 +289,103 @@ class LivresController extends Controller
         if($user != null)
         {
             if($user->getRoles()[0]!="ROLE_ELEVE") {
-                $idc=$user->getId();
-                $reservation=$this->getDoctrine()->getRepository(Reservationlivre::class)->findByUser($idc);
-                return $this->render("@Biblio/LivresFront/ReadMyReservation.html.twig", array("list"=>$reservation));
+
+                $reservation=$this->getDoctrine()->getRepository(Reservationlivre::class)
+                    ->findAll();
+                $user=$this->getUser();
+                $livre=$this->getDoctrine()->getRepository(Livres::class)
+                    ->findAll();
+                return $this->render("@Biblio/LivresFront/ReadMyReservation.html.twig", array("list"=>$reservation,"usr"=>$user,"livre"=>$livre));
             }
             else
             {return $this->redirectToRoute("fos_user_security_login");}
         }
         return $this->redirectToRoute("fos_user_security_login");
+    }
+
+    public function StatAction()
+    {
+        $pieChart = new PieChart();
+
+        $em= $this->getDoctrine();
+        $livre = $em->getRepository(Livres::class)->findAll();
+        $nbL=0;
+        foreach($livre as $l) {
+            $nbL=$nbL+$l->getQuantite();
+        }
+
+        $data= array();
+        $stat=['livre', 'nbLivre'];
+        $nb=0;
+        array_push($data,$stat);
+        foreach($livre as $l) {
+            $stat=array();
+            array_push($stat,$l->getNom(),($l->getQuantite()));
+            $nb=($l->getQuantite());
+            $stat=[$l->getNom(),$nb];
+            array_push($data,$stat);
+
+        }
+
+        $pieChart->getData()->setArrayToDataTable(
+            $data
+        );
+
+        $pieChart->getOptions()->setTitle('Livres Disponible');
+        $pieChart->getOptions()->setHeight(400);
+        $pieChart->getOptions()->setWidth(800);
+        $pieChart->getOptions()->setBackgroundColor('#719cfe');
+        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
+        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
+
+        return $this->render('@Biblio/LivresFront/Stat.html.twig', array('piechart' => $pieChart));
+    }
+
+    public function searchAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $requestString = $request->get('p');
+        $posts =  $em->getRepository('BiblioBundle:Livres')->findEntitiesByString($requestString);
+        if(!$posts) {
+            $result['posts']['error'] = "Post Not found :( ";
+        } else {
+            $result['posts'] = $this->getRealEntities($posts);
+        }
+        return new Response(json_encode($result));
+    }
+    public function getRealEntities($posts){
+        foreach ($posts as $posts){
+            $realEntities[$posts->getIdLivre()] =
+                [$posts->getNom(),$posts->getAuteur(),$posts->getQuantite(),$posts->getDescription(),$posts->getImage()];
+
+        }
+        return $realEntities;
+    }
+
+    public function impAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $livre = $em->getRepository(Livres::class)->findAll();
+
+        return $this->render('@Biblio/Livres/imp.html.twig', array(
+            'livre' => $livre,
+        ));
+    }
+
+
+
+    public function showAction(Livres $livre)
+    {
+
+
+        return $this->render('@Biblio/Livres/show.html.twig', array(
+            'livre' => $livre,
+
+        ));
     }
 
 }

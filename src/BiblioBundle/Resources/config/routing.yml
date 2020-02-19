@@ -61,3 +61,23 @@ sandbox_pdfexample:
 reservation_read_User:
     path:     /readMyReservation
     defaults: { _controller: BiblioBundle:Livres:reserveReadByUser }
+
+Stat:
+    path:     /Stat
+    defaults: { _controller: BiblioBundle:Livres:Stat }
+
+ajax_search:
+    path:     /search
+    defaults: { _controller: BiblioBundle:Livres:search }
+    methods:  GET
+
+
+ImpLivre:
+    path:     /imp
+    defaults: { _controller: BiblioBundle:Livres:imp }
+    methods:  GET
+
+show:
+    path:     /{id}/show
+    defaults: { _controller: BiblioBundle:Livres:show }
+    methods:  GET

@@ -1,6 +1,9 @@
 <?php
 
 namespace BiblioBundle\Repository;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\Query;
 
 /**
  * ReservationlivreRepository
@@ -24,4 +27,7 @@ class ReservationlivreRepository extends \Doctrine\ORM\EntityRepository
         $query=$this->getEntityManager()->createQuery("SELECT r from BiblioBundle:Reservationlivre r where r.id ='$idc'");
         return $query->getResult();
     }
+
+
+
 }

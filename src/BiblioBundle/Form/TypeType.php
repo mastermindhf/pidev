@@ -17,8 +17,8 @@ class TypeType extends AbstractType
         $builder->add('libelle')
             ->add('Ajout',SubmitType::class,['attr'=>['formnovalidate'=>'formnovalidate']])	;
     }/**
-     * {@inheritdoc}
-     */
+ * {@inheritdoc}
+ */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(

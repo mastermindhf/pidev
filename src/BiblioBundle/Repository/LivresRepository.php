@@ -23,4 +23,27 @@ class LivresRepository extends \Doctrine\ORM\EntityRepository
         $query->setParameter('id', $id);
         return $query->getResult();
     }
+
+    public function findMQ(){
+        $query=$this->getEntityManager()
+            ->createQuery("select m.nom,m.quantite from BiblioBundle:Livres m ");
+               return $query->getResult();
+    }
+
+    public function findEntitiesByString($str){
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p
+                FROM BiblioBundle:Livres p
+                WHERE p.nom LIKE :str'
+            )
+            ->setParameter('str', '%'.$str.'%')
+            ->getResult();
+    }
+
+    public function findNb(){
+        $query=$this->getEntityManager()
+            ->createQuery("select count(m.nom) from BiblioBundle:Livres m ");
+        return $query->getResult();
+    }
 }

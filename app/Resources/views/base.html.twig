@@ -1,170 +1,164 @@
+
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        {% block stylesheets %}<meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta charset="UTF-8" />
-            <meta name="keywords" content="My School Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-            <script>
-                addEventListener("load", function () {
-                    setTimeout(hideURLbar, 0);
-                }, false);
+<html lang="en">
 
-                function hideURLbar() {
-                    window.scrollTo(0, 1);
-                }
-            </script>
-            <!-- //Meta tag Keywords -->
+<head>
 
-            <!-- Custom-Files -->
-            <link href="{{ asset ('css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
-            <!-- Bootstrap-CSS -->
-            <link href="{{ asset ('css/style.css')}}" rel='stylesheet' type='text/css' />
-            <!-- Style-CSS -->
-            <link href=""{{ asset ('css/font-awesome.min.css')}}" rel="stylesheet">
-            <!-- Font-Awesome-Icons-CSS -->
-            <!-- //Custom-Files -->
+    <meta charset="utf-8">
+    <title>STUDYNET - VOTRE ECOLE </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-            <!-- Web-Fonts -->
-            <link href="//fonts.googleapis.com/css?family=Lora:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext,vietnamese"
-                  rel="stylesheet">
-            <link href="//fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&amp;subset=latin-ext" rel="stylesheet">
-            <!-- //Web-Fonts -->{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block header %}
-            <header>
-                <div class="container">
-                    <div class="header d-lg-flex justify-content-between align-items-center py-2 px-sm-2 px-1">
-                        <!-- logo -->
-                        <div id="logo">
-                            <h1><a href="index.html">My School</a></h1>
-                        </div>
-                        <!-- //logo -->
-                        <!-- nav -->
-                        <div class="nav_w3ls ml-lg-5">
-                            <nav>
-                                <label for="drop" class="toggle">Menu</label>
-                                <input type="checkbox" id="drop" />
-                                <ul class="menu">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="index.html">About</a></li>
-                                    <li><a href="">Ajout</a></li>
-                                    <li>
-                                        <!-- First Tier Drop Down -->
-                                        <label for="drop-2" class="toggle toogle-2">Pages <span class="fa fa-angle-down"
-                                                                                                aria-hidden="true"></span>
-                                        </label>
-                                        <a href="#">Pages <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-                                        <input type="checkbox" id="drop-2" />
-                                        <ul>
-                                            <li><a href="index.html" class="drop-text">Events</a></li>
-                                            <li><a href="index.html" class="drop-text">What We Do?</a></li>
-                                            <li><a href="index.html" class="drop-text">Popular Courses</a></li>
-                                            <li><a href="index.html" class="drop-text">Statistics</a></li>
-                                            <li><a href="index.html" class="drop-text">Gallery</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="index.html">Contact</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="register.html">Register</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <!-- //nav -->
-                    </div>
-                </div>
-            </header>
-        {% endblock %}
-        {% block content %}
-            <div class="inner-banner-w3ls py-5" id="home">
-                <div class="container py-xl-5 py-lg-3">
-                    <!-- register  -->
-                    <div class="modal-body mt-md-2 mt-5">
-                        {% block title %}<h3 class="title-w3 mb-5 text-center text-wh font-weight-bold">Register Now</h3>{% endblock %}
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster">
+    <link rel="stylesheet" href="{{ asset('front/assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('front/assets/prettyPhoto/css/prettyPhoto.css')}}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/flexslider.css')}}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/font-awesome.css')}}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/style.css')}}">
 
-                    </div>
-                    <!-- //register -->
-                </div>
-            </div>
-            <!-- //inner banner -->
-        {% endblock %}
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-{% block footer %}
-    <footer class="py-5">
-        <div class="container py-xl-4 py-lg-3">
-            <div class="row footer-grids">
-                <div class="col-lg-2 col-6 footer-grid">
-                    <h3 class="mb-sm-4 mb-3">Navigation</h3>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="index.html">Index</a>
-                        </li>
-                        <li>
-                            <a href="index.html">About Us</a>
-                        </li>
-                        <li>
-                            <a href="index.html">What We Do?</a>
-                        </li>
-                        <li>
-                            <a href="index.html">Our Gallery</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-6 footer-grid">
-                    <h3 class="mb-sm-4 mb-3">Some More</h3>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="index.html">Apply Now</a>
-                        </li>
-                        <li>
-                            <a href="index.html">Our Events</a>
-                        </li>
-                        <li>
-                            <a href="index.html">Popular Courses</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-6 footer-grid footer-contact mt-lg-0 mt-4">
-                    <h3 class="mb-sm-4 mb-3">Get In Touch</h3>
-                    <ul class="list-unstyled">
-                        <li>
-                            +01(24) 8543 8088
-                        </li>
-                        <li>
-                            <a href="mailto:info@example.com">info@example.com</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-6 footer-grid text-lg-right">
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="index.html">Our Statistics</a>
-                        </li>
-                        <li>
-                            <a href="login.html">Login</a>
-                        </li>
-                        <li>
-                            <a href="register.html">Register</a>
-                        </li>
-                        <li>
-                            <a href="index.html">Contact Us</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 footer-grid mt-lg-0 mt-4">
-                    <div class="footer-logo">
-                        <h2 class="text-lg-center text-center">
-                            <a class="logo text-wh font-weight-bold" href="index.html">
-                                My School</a>
-                        </h2>
-                    </div>
+    <!-- Favicon and touch icons -->
+    <link rel="shortcut icon" href="{{ asset('front/assets/ico/favicon.ico')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('front/assets/ico/apple-touch-icon-144-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('front/assets/ico/apple-touch-icon-114-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('front/assets/ico/apple-touch-icon-72-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('front/assets/ico/apple-touch-icon-57-precomposed.png')}}">
+
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="container">
+    <div class="header row">
+        <div class="span12">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <h1>
+                        <a class="brand" href="index.html">STUDYNET - a super cool SCHOOL ...</a>
+                    </h1>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            <li class="current-page">
+                                <a href="#"><i class="icon-home"></i><br />Home</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icon-camera"></i><br />Scolarité</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icon-comments"></i><br />Administration</a>
+                            </li>
+                            <li>
+                                <a href="{{ path("livre_indexFront") }}"><i class="icon-tasks"></i><br />Bibliothéque</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icon-user"></i><br />Evénements</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icon-user"></i><br />Cours et Quizz</a>
+                            </li>
+                            <li>
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <a href="{{ path('categorie_new') }}"><i class="icon-user"></i><br />Espace Admin</a>
+                                    {% endif %}
+                                    {% if is_granted('ROLE_ENSEIGNANT') %}
+                                        <a href="{{ path('categorie_new') }}"><i class="icon-user"></i><br />Espace ENSEIGNANT</a>
+                                    {% endif %}
+
+                                    <a href="{{ path('fos_user_security_logout') }}"><i class="icon-user"></i><br />Logout</a>
+                                {% else %}
+                                    <a href="{{ path('fos_user_security_login') }}"><i class="icon-user"></i><br />Login</a>
+                                {% endif %}
+                            </li>
+                        </ul></div>
                 </div>
             </div>
         </div>
-    </footer>
-    {% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    </div>
+</div>
+
+<!-- Page Title -->
+<div class="page-title">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <i class="icon-tasks page-title-icon"></i>
+                <h2>Services /</h2>
+                <p>Here are the services we offer</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block body %}
+{% endblock %}
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="widget span3">
+                <h4>About Us</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+                <p><a href="">Read more...</a></p>
+            </div>
+            <div class="widget span3">
+                <h4>Latest Tweets</h4>
+                <div class="show-tweets"></div>
+            </div>
+            <div class="widget span3">
+                <h4>Flickr Photos</h4>
+                <ul class="flickr-feed"></ul>
+            </div>
+            <div class="widget span3">
+                <h4>Contact Us</h4>
+                <p><i class="icon-map-marker"></i> Address: Via Principe Amedeo 9, 10100, Torino, TO, Italy</p>
+                <p><i class="icon-phone"></i> Phone: 0039 333 12 68 347</p>
+                <p><i class="icon-user"></i> Skype: Andia_Agency</p>
+                <p><i class="icon-envelope-alt"></i> Email: <a href="">contact@andia.co.uk</a></p>
+            </div>
+        </div>
+        <div class="footer-border"></div>
+        <div class="row">
+            <div class="copyright span4">
+                <p>Copyright 2012 Andia - All rights reserved. Template by <a href="http://azmind.com">Azmind</a>.</p>
+            </div>
+            <div class="social span8">
+                <a class="facebook" href=""></a>
+                <a class="dribbble" href=""></a>
+                <a class="twitter" href=""></a>
+                <a class="pinterest" href=""></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Javascript -->
+<script src="{{ asset('front/assets/js/jquery-1.8.2.min.js')}}"></script>
+<script src="{{ asset('front/assets/js/jquery-1.8.2.min.js')}}"></script>
+<script src="{{ asset('front/assets/js/jquery.flexslider.js')}}"></script>
+<script src="{{ asset('front/assets/js/jquery.tweet.js')}}"></script>
+<script src="{{ asset('front/assets/js/jflickrfeed.js')}}"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script src="{{ asset('front/assets/js/jquery.ui.map.min.js')}}"></script>
+<script src="{{ asset('front/assets/js/jquery.quicksand.js')}}"></script>
+<script src="{{ asset('front/assets/prettyPhoto/js/jquery.prettyPhoto.js')}}"></script>
+
+
+</body>
+
 </html>
+

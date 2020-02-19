@@ -1,8 +1,6 @@
-{% extends "base.html.twig" %}
-{% block content %}
-<br><br>
-    <br><br>
-    <table border="1">
+{% extends 'Back/back.html.twig' %}
+{% block body %}
+    <table class="table table-striped">
     <tr>
         <th>Id</th>
         <th>Libelle</th>
@@ -15,9 +13,10 @@
             <td>{{ cc.idL }}</td>
             <td>{{ cc.libelle }}</td>
             <td>
-                <a href="{{ path('Delete',{'id':cc.idL}) }}">Delete</a>
+               <center> <a class="fa fa-trash" style="color: #ff6c5f" href="{{ path('Delete',{'id':cc.idL}) }}"></a></center>
             </td>
-            <td> <a href="{{ path('Update',{'id':cc.idL}) }}">Update</a>
+            <td>
+                <center><a class="fa fa-edit" style="color:#2e6da4 " href="{{ path('Update',{'id':cc.idL}) }}"></a></center>
             </td>
         </tr>
     {% endfor %}

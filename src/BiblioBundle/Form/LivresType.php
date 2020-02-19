@@ -22,14 +22,14 @@ class LivresType extends AbstractType
             ->add('type',EntityType::class,
                 array('class'=>'BiblioBundle:Type',		//Recuperer les nom et l'afficher dans une liste
                     'choice_label'=>'libelle'))
-            ->add('nbpersonnes')
+
             ->add('quantite')
             ->add('description')
 
             ->add('Ajout',SubmitType::class,['attr'=>['formnovalidate'=>'formnovalidate']]);
     }/**
-     * {@inheritdoc}
-     */
+ * {@inheritdoc}
+ */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(

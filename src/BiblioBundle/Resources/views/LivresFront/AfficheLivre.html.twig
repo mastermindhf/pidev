@@ -1,6 +1,6 @@
-{% extends "base.html.twig" %}
-{% block content%}
-<br><br><br>
+{% extends 'base.html.twig' %}
+
+{% block biblio %}
 <h1 class="title-sub mb-4">Liste des Livres</h1>
 
     {% for cc in list %}
@@ -15,13 +15,17 @@
             <td class="sub-para">{{ cc.description }}</td><br>
 
 
-            <td>
-                <a class="service-btn mt-4 btn" href="{{ path('ReservationLivre',{'idLivre':cc.idLivre}) }}">Empreinter</a>
-            </td>
-        <td>
-            <a class="service-btn mt-4 btn" href="{{ path('RendreLivre',{'idLivre':cc.idLivre}) }}"> Rendre </a>
-        </td>
 
+                 <td>
+                     <a class="service-btn mt-4 btn" href="{{ path('ReservationLivre',{'idLivre':cc.idLivre}) }}">Empreinter</a>
+                 </td>
+
+
+                <td>
+                    <a class="service-btn mt-4 btn" href="{{ path('RendreLivre',{'idLivre':cc.idLivre}) }}"> Rendre </a>
+                </td>
        </div>
     {% endfor %}
+
+
 {% endblock %}
