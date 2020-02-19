@@ -1,0 +1,46 @@
+{% extends 'Back/back.html.twig' %}
+{% block bar %}
+{% endblock %}
+
+{% block body %}
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        window.print();
+    });
+
+</script>
+    <h1>Liste des Livres</h1><hr>
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Auteur</th>
+
+            <th>Nb d'emprunte</th>
+            <th>quantite</th>
+            <th>Description</th>
+            <th>Image</th>
+
+        </tr>
+
+        <tbody>
+        {% for cc in livre %}
+            <tr>
+                <td scope="row">{{ cc.idLivre }}</td>
+                <td>{{ cc.nom }}</td>
+                <td>{{ cc.auteur }}</td>
+                <td>{{ cc.nbpersonnes }}</td>
+                <td>{{ cc.quantite }}</td>
+                <td>{{ cc.description }}</td>
+                <td class="fa-image" height="200px" width="300px" style="background-image: url('{{ asset('images/' ~ cc.image) }}')">
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
