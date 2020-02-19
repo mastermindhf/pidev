@@ -4,6 +4,7 @@ namespace SuiviBundle\Controller;
 
 use SuiviBundle\Entity\Classe;
 use SuiviBundle\Entity\Eleve;
+use SuiviBundle\Entity\ListeAppel;
 use SuiviBundle\Entity\Matiere;
 use SuiviBundle\Entity\Note;
 use SuiviBundle\Form\ListeAppelType;
@@ -76,6 +77,14 @@ class NoteController extends Controller
         }
 
         return $this->render('@Suivi/Suivi/Updaten.html.twig',array('form'=>$Form->createView()));
+    }
+    function Afficherne2Action($ide){
+        $em=$this->getDoctrine()->getManager();
+
+        $mats=$em->getRepository(Matiere::class)->findAll();
+        $n=$this->getDoctrine()->getRepository(Note::class)->finde($ide);
+        $la=$this->getDoctrine()->getRepository(ListeAppel::class)->Finde($ide);
+        return $this->render('@Suivi/Suivi/affichernfront.html.twig',array('n'=>$n,'mats'=>$mats,'la'=>$la));
     }
 
 }

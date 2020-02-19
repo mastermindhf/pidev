@@ -3,11 +3,15 @@
 namespace SuiviBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Classe
  *
  * @ORM\Table(name="classe")
+ *
+ * @UniqueEntity("libelle")
  * @ORM\Entity(repositoryClass="SuiviBundle\Repository\ClasseRepository")
  */
 class Classe

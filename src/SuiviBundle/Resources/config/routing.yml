@@ -48,3 +48,12 @@ Deleten:
 Updaten:
     path:   /Updaten/{id}
     defaults: {_controller: SuiviBundle:Note:Updaten}
+
+ajax_search:
+  path:     /search
+  defaults: { _controller: SuiviBundle:Suivi:search }
+
+afficherne2:
+  path:     /Afficherne2/{ide}
+  defaults: { _controller: SuiviBundle:Note:Afficherne2 }
+

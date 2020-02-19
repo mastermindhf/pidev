@@ -16,4 +16,10 @@ class ListeAppelRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
 
     }
+    function Finde($ide){
+        $query=$this->getEntityManager()->createQuery("select la from SuiviBundle:ListeAppel la where la.eleve=:ide ")
+            ->setParameter('ide',$ide);
+        return $query->getResult();
+
+    }
 }

@@ -1,6 +1,24 @@
 {% extends 'Back/back.html.twig' %}
+
+{% block search %}
+    <div class="search-box">
+        <form class="input">
+            <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search"
+                   id="input-31"/>
+            <label class="input__label" for="input-31">
+                <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                    <path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+                </svg>
+            </label>
+        </form>
+    </div>
+
+{% endblock %}
+
 {% block body %}
-<table class="table table-striped">
+
+
+<table class="table table-striped" id="entitiesNav">
     <tr align="center">
 
         <th>Nom</th>
@@ -10,7 +28,7 @@
         <th>Supprimer</th>
         <th>Modifier</th>
     </tr>
-    {% for cc in la %}
+    {% for cc in la  %}
         <tr align="center">
             <td>{{ cc.eleve.nom}}</td>
             <td>{{ cc.eleve.prenom }}</td>
@@ -25,4 +43,53 @@
     {% endfor %}
 
 </table>
+{% endblock %}
+
+{% block js %}
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#input-31").keyup(function() {
+                var minlength = 1;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#entitiesNav").html('');
+                if (value.length >= minlength ) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('ajax_search') }}",
+                        data: {
+                            'q' : value
+                        },
+                        dataType: "text",
+                        success: function(msg){
+
+                            if (value===$(that).val()) {
+                                var result = JSON.parse(msg);
+
+                                $.each(result, function(key, arr) {
+                                    $.each(arr, function(id, value) {
+                                        if (key === 'rec') {
+                                            if (id !== 'error') {
+                                                console.log(value[1]);
+                                                entitySelector.append('<li><b>'+value[0]+'</b>&nbsp'+'<b>' +value[1]+'</b></a></li>');
+                                            }else {
+                                                entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                            }
+                                        }
+                                    });
+                                });
+
+
+
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 {% endblock %}

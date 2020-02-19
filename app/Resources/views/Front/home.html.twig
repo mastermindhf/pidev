@@ -23,6 +23,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             window.scrollTo(0, 1);
         }
     </script>
+    <!-- js-->
+    <script src="{{ asset('Back/js/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ asset('Back/js/modernizr.custom.js') }}"></script>
     <!-- //Meta tag Keywords -->
 
     <!-- Custom-Files -->
@@ -76,6 +79,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                 <li><a href="#plats" class="drop-text">Plats</a></li>
                                 <li><a href="#biblo" class="drop-text">Bibliothéque</a></li>
+                                <li><a href="#notes" class="drop-text">Notes</a></li>
+                                <li><a href="#absence" class="drop-text">Absences</a></li>
                             </ul>
                         </li>
                         <li><a href="#contact">Contact</a></li>
@@ -443,7 +448,36 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
 </div>
+<div class="" id="notes">
+    <div class="container">
+        <div class="style-banner mx-auto">
+            <h3 class="text-wh font-weight-bold"><span>Notes</span></h3>
+            {% block notes %}
+            {% endblock  %}
+            <p class="mt-3 text-li" id="join"></p>
+            <!-- form -->
+            <div class="home-form-w3ls mt-5">
 
+            </div>
+            <!-- //form -->
+        </div>
+    </div>
+</div>
+<div class="" id="absence">
+    <div class="container">
+        <div class="style-banner mx-auto">
+            <h3 class="text-wh font-weight-bold"><span>Absences</span></h3>
+            {% block absence %}
+            {% endblock  %}
+            <p class="mt-3 text-li" id="join"></p>
+            <!-- form -->
+            <div class="home-form-w3ls mt-5">
+
+            </div>
+            <!-- //form -->
+        </div>
+    </div>
+</div>
 <!-- testimonials -->
 <section class="clients py-5" id="testi">
     <div class="container py-xl-5 py-lg-3">
@@ -646,7 +680,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <span class="fa fa-angle-double-up" aria-hidden="true"></span>
 </a>
 <!-- //move top icon -->
-
+{% block js %}
+{% endblock %}
 </body>
 
 </html>

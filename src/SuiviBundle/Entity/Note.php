@@ -3,11 +3,14 @@
 namespace SuiviBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Note
  *
  * @ORM\Table(name="note")
+ * @UniqueEntity(fields={"matiere","eleve"}, message="cette eleve est déja noté")
  * @ORM\Entity(repositoryClass="SuiviBundle\Repository\NoteRepository")
  */
 class Note

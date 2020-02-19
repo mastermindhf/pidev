@@ -8,6 +8,7 @@ use SuiviBundle\Entity\ListeAppel;
 use SuiviBundle\Form\ListeAppelType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class SuiviController extends Controller
 {
@@ -17,7 +18,7 @@ class SuiviController extends Controller
             $cl=$this->getDoctrine()->getRepository(Classe::class)->findAll();
         return $this->render('@Suivi/Suivi/afficherc.html.twig',array('cl'=>$cl));
     }
-    function AjoutLAAction($id){
+    function AjoutLAAction($id,Request $request){
         $la=new ListeAppel();
         $eleve=$this->getDoctrine()->getRepository(Eleve::class)->FindCl($id);
         $classe=$this->getDoctrine()->getRepository(Classe::class)->find($id);
@@ -79,6 +80,27 @@ class SuiviController extends Controller
         }
 
         return $this->render('@Suivi/Suivi/update.html.twig',array('form'=>$Form->createView()));
+    }
+
+    public function searchAction(Request $request)
+    {
+        $em =$this->getDoctrine()->getManager();
+        $requestString = $request->get('q');
+        $rec=$em->getRepository('SuiviBundle:Eleve')->findNom($requestString);
+
+        if(!$rec) {
+            $result['rec']['error'] = "Eleve Non Trouvé :( ";
+        } else {
+            $result['rec'] = $this->getRealEntities($rec);
+        }
+        return new Response(json_encode($result));
+    }
+    public function getRealEntities($rec){
+        foreach ($rec as $rec){
+            $realEntities[$rec->getId()] = [$rec->getNom(),$rec->getPrenom(),$rec->getId()];
+
+        }
+        return $realEntities;
     }
 
 }

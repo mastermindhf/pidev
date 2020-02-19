@@ -4,11 +4,14 @@ namespace SuiviBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * ListeAppel
  *
  * @ORM\Table(name="liste_appel")
+ * @UniqueEntity(fields={"date","eleve"}, message="cette eleve est déja marqué")
  * @ORM\Entity(repositoryClass="SuiviBundle\Repository\ListeAppelRepository")
  */
 class ListeAppel
@@ -31,6 +34,7 @@ class ListeAppel
 
     /**
      * @var \DateTime
+     * @Assert\GreaterThan("-1 years")
      *@Assert\LessThanOrEqual("today")
      *
      * @ORM\Column(name="date", type="datetime")

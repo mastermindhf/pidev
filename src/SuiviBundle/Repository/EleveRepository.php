@@ -15,4 +15,9 @@ class EleveRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
 
     }
+    function FindNom($nom){
+        $query=$this->getEntityManager()->createQuery("select e from SuiviBundle:Eleve e where e.nom LIKE '%$nom%'");
+        return $query->getResult();
+
+    }
 }
