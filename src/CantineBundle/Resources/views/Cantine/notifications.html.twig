@@ -1,0 +1,22 @@
+{% extends 'Back/back.html.twig' %}
+{% block count %}
+
+{{ x }}
+{% endblock %}
+
+
+{% block all %}
+{% for notif in notifs %}
+
+    <li><a href="#">
+            <div class="user_img"><img src="{{ asset('Back/images/1.jpg') }}" alt=""></div>
+            <div class="notification_desc">
+                <p>{{ notif.user }}a aimé le plat{{ notif.plat }}</p>
+                <p><span>1 hour ago</span></p>
+            </div>
+            <div class="clearfix"></div>
+        </a></li>
+
+{% endfor %}
+{% endblock %}
+

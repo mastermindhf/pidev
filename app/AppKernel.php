@@ -1,5 +1,6 @@
 <?php
 
+use FOS\MessageBundle\FOSMessageBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -24,6 +25,17 @@ class AppKernel extends Kernel
             new RecBundle\RecBundle(),
             new BiblioBundle\BiblioBundle(),
             new SuiviEnsBundle\SuiviEnsBundle(),
+            new RecEnsBundle\RecEnsBundle(),
+            new FOS\MessageBundle\FOSMessageBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
+            new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
+            new SuiviBundle\SuiviBundle(),
+            new CalendrierBundle\CalendrierBundle(),
+            new CantineBundle\CantineBundle(),
+            new ClubBundle\ClubBundle(),
+            new AncaRebeca\FullCalendarBundle\FullCalendarBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -1,39 +1,41 @@
 <?php
 
 namespace UserBundle\Controller;
-
+use CantineBundle\Entity\Notification;
+use UserBundle\Entity\User;
+use CoursBundle\Entity\Cours;
+use CoursBundle\Entity\Wish;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {
-        $u = $this->container->get('security.token_storage')->getToken()->getUser();
-        try
-        {
-            switch ($u->getRoles()[0]) {
-                case "ADMIN":
-                    return $this->redirect('access/admin');
-                    break;
-                case "PARENT":
-                    return $this->redirect('access/parent');
-                    break;
-                case "ELEVE":
-                    return $this->redirect('access/eleve');
-                    break;
-                case "ENSEIGNANT":
-                    return $this->redirect('access/enseignant');
-                    break;
-                    case "CLUB":
-                    return $this->redirect('access/club');
-                    break;
-            }
-        }
-        catch (\Throwable $e)
-        {
-            return $this->redirect('http://localhost/Test/web/app_dev.php/login');
+       $u=$this->container->get('security.token_storage')->getToken()->getUser();
 
-        };
+            try {
+                switch ($u->getRoles()[0]) {
+                    case "ADMIN":
+                        return $this->redirect('access/admin');
+                        break;
+                    case "PARENT":
+                        return $this->redirect('access/parent');
+                        break;
+                    case "ELEVE":
+                        return $this->redirect('access/eleve');
+                        break;
+                    case "ENSEIGNANT":
+                        return $this->redirect('access/enseignant');
+                        break;
+                    case "CLUB":
+                        return $this->redirect('access/club');
+                        break;
+                }
+            } catch (\Throwable $e) {
+                return $this->redirect('http://localhost/Pi-final/web/app_dev.php/login');
+
+            };
+
 
 
     }
@@ -44,8 +46,12 @@ class DefaultController extends Controller
 
 
     public function adminAction()
-    {
-        return $this->render('@User/Default/admin.html.twig');
+    {   $user=$this->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser()->getId();
+        $notifs=$this->getDoctrine()->getRepository(Notification::class)->findAll();
+        $x=count($notifs);
+
+        return $this->render('@User/Default/admin.html.twig',['u'=>$user,'x'=>$x,'notifs'=>$notifs]);
 
     }
 
@@ -59,15 +65,18 @@ class DefaultController extends Controller
 
 
     public function eleveAction()
-    {
-        return $this->render('@User/Default/eleve.html.twig');
+    {   $user = $this->getUser();
+
+        $w=$this->getDoctrine()->getRepository(Wish::class)->findMesCours();
+        $Cours = $this->getDoctrine()->getRepository(Cours::class)->findAll();
+        return $this->render('@User/Default/eleve.html.twig', array('Cours' => $Cours,'u'=>$user,'w'=>$w));
 
     }
 
 
     public function enseignantAction()
-    {
-        return $this->render('@User/Default/enseignant.html.twig');
+    {    $user = $this->container->get('security.token_storage')->getToken()->getUser()->getNom();
+        return $this->render('@User/Default/enseignant.html.twig',['u'=>$user]);
 
     }
     public function clubAction()

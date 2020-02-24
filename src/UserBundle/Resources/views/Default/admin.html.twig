@@ -1,1 +1,29 @@
-{% extends "Back/back.html.twig" %}
+{% extends 'Back/back.html.twig' %}
+
+
+{% block body %}
+
+                    <h5><strong> Top  3 plats </strong></h5>
+                    <span>{{ render(path('topPlat')) }}</span>
+
+            {{ render(path('Stat')) }}
+
+    {{ render(path('ListeEmpreinte')) }}
+    {{ render(path('ListFav')) }}
+{% endblock %}
+
+{% block all %}
+    {% for notif in notifs %}
+
+        <li><a href="#">
+                <div class="user_img"><img src="{{ asset('Back/images/1.jpg') }}" alt=""></div>
+                <div class="notification_desc">
+                    <p>{{ notif.user }} a aimé le plat {{ notif.plat }}</p>
+                    <p><span><a href="{{ path('traiter_notif',{'plat':notif.plat.id}) }}">👁‍</i></a></span></p>
+                </div>
+                <div class="clearfix"></div>
+            </a>
+        </li>
+
+    {% endfor %}
+{% endblock %}

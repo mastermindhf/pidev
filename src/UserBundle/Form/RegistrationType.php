@@ -1,17 +1,26 @@
 <?php
 
 namespace UserBundle\Form;
+use SuiviBundle\Entity\Classe;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use UserBundle\Entity\User;
 
 class RegistrationType extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom');
+        $builder->add('nom')->add('prenom')->add('classe',EntityType::class,[
+            'class'=>Classe::class,
+
+            'placeholder'=>'',
+            'required'=>false,
+            'choice_label'=>'libelle'
+            ]);
         $builder->add('roles', ChoiceType::class, array(
                 'choices'=> array(
                     'Parent'   => 'Parent',

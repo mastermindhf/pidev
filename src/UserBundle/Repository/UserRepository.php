@@ -10,4 +10,14 @@ namespace UserBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    function FindCl($id){
+        $query=$this->getEntityManager()->createQuery("select e from UserBundle:User e where e.classe=:idc")->setParameter('idc',$id);
+        return $query->getResult();
+
+    }
+    function FindNom($nom){
+        $query=$this->getEntityManager()->createQuery("select e from UserBundle:User e where e.nom LIKE '%$nom%'");
+        return $query->getResult();
+
+    }
 }
