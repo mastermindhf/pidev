@@ -1,14 +1,25 @@
+rec_ens:
+    resource: "@RecEnsBundle/Resources/config/routing.yml"
+    prefix:   /recens
+
 suivi_ens:
     resource: "@SuiviEnsBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /suivi
 
 rec:
     resource: "@RecBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /rec
+club:
+    resource: "@ClubBundle/Resources/config/routing.yml"
+    prefix:   /club
+suivi:
+    resource: "@SuiviBundle/Resources/config/routing.yml"
+    prefix:   /s
+
 
 cours:
     resource: "@CoursBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /cours
 
 administration:
     resource: "@AdministrationBundle/Resources/config/routing.yml"
@@ -27,3 +38,15 @@ fos_user:
 biblio:
     resource: "@BiblioBundle/Resources/config/routing.yml"
     prefix:   /biblio
+fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /message
+
+cantine:
+    resource: "@CantineBundle/Resources/config/routing.yml"
+    prefix:   /cantine
+
+calendrier:
+    resource: "@CalendrierBundle/Resources/config/routing.yml"
+    prefix:   /calendrier
+

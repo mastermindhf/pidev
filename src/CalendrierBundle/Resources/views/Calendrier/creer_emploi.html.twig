@@ -1,0 +1,16 @@
+
+{% extends 'Back/back.html.twig' %}
+{% block body %}
+    <br> <br>
+    <h3> Créer emploi</h3>
+    <br>
+{{ form(f) }}
+
+{% if r!='' %}
+
+il reste {{ r.nbHeures }} heures à affecter au prof {{ r.nom }}
+{% endif %}
+{% if msg!='' %}
+    {{ msg }}
+{% endif %}
+{% endblock %}

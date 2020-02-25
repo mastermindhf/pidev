@@ -1,0 +1,28 @@
+{% extends 'Back/back.html.twig' %}
+{% block body %}
+    <script src="{{ asset('sorttable.js') }}"></script>
+    <table class="table table-striped sortable">
+        <tr align="center"  >
+            <td><b>ID</b></td>
+            <td><b>Enseignant</b></td>
+            <td><b>Date</b></td>
+            <td><b>presenceAbsence</b></td>
+            <td><b>Modifier</b></td>
+            <td><b>Supprimer</b></td>
+
+
+        </tr>
+        {% for c in suiv %}
+            <tr align=" center" >
+                <td>{{c.id}}</td>
+                <td>{{ c.ens }}</td>
+                <td>{{ c.date|date('d,m,y,h') }}</td>
+                <td>{{c.presAbsc}}</td>
+                <td><a href="{{ path('Modifier_suivi',{'id':c.id}) }}"><i class="fa fa-edit" style="color:#2e6da4 " ></i></a></td>
+                <td><a href="{{ path('Supprimer_suivi',{'id':c.id}) }}"><i class="fa fa-trash" style="color: #ff6c5f"></i></a></td>
+
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

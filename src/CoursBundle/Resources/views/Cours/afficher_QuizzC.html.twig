@@ -1,0 +1,17 @@
+{% extends 'Back/backE.html.twig' %}
+{% block body %}
+
+    <table class="table table-striped">
+        {% for c in Quizz %}
+            <tr><td></td>
+                <td>
+                    <ul>
+                        <li>{{ c.libelle }}</li><a href="{{ path('AfficherQuizzByCours',{'cours': c.id}) }}"><span>Consulter Quizz</span></a>
+                    </ul>
+                </td>
+            </tr>
+
+        {% endfor %}
+    </table>
+
+{% endblock %}

@@ -4,3 +4,7 @@ administration_homepage:
 administration_ajout:
     path:     /ajout
     defaults: { _controller: AdministrationBundle:Administration:Ajout }
+
+administration_ajout_eleve:
+    path:     /AjouterEleve
+    defaults: { _controller: AdministrationBundle:Administration:AjouterEleve }

@@ -1,0 +1,108 @@
+biblio_homepage:
+    path:     /
+    defaults: { _controller: BiblioBundle:Default:index }
+
+ajoutLivre:
+    path:     /ajoutLivre
+    defaults: { _controller: BiblioBundle:Livres:AjoutLivre }
+
+AfficheLivre:
+    path:     /AfficheLivre
+    defaults: { _controller: BiblioBundle:Livres:AfficheLivre }
+
+AfficheLivreF:
+    path:     /AfficheLivreF
+    defaults: { _controller: BiblioBundle:Livres:AfficheLivreF }
+
+UpdateLivre:
+    path: /UpdateLivre/{id}
+    defaults: {_controller: BiblioBundle:Livres:UpdateLivre}
+
+DeleteLivre:
+    path: /DeleteLivre/{id}
+    defaults: {_controller: BiblioBundle:Livres:DeleteLivre}
+
+ReservationLivre:
+    path:     /ReservationLivre/{idLivre}
+    defaults: { _controller: BiblioBundle:Livres:ReservationLivre }
+
+getLivre:
+    path:     /getLivre/{idLivre}
+    defaults: { _controller: BiblioBundle:Livres:getLivre }
+
+RendreLivre:
+    path:   /RendreLivre/{idLivre}
+    defaults: { _controller: BiblioBundle:Livres:RendreLivre }
+
+
+Delete:
+    path: /Delete/{id}
+    defaults: {_controller: BiblioBundle:Type:Delete}
+
+
+Update:
+    path: /Update/{id}
+    defaults: {_controller: BiblioBundle:Type:Update}
+
+
+AfficheType:
+    path: /AfficheType
+    defaults: {_controller: BiblioBundle:Type:AfficheType}
+
+
+AjoutType:
+    path: /AjoutType
+    defaults: {_controller: BiblioBundle:Type:AjoutType}
+
+sandbox_pdfexample:
+    path:     /pdf-example
+    defaults: { _controller: BiblioBundle:Livres:pdf }
+
+reservation_read_User:
+    path:     /readMyReservation
+    defaults: { _controller: BiblioBundle:Livres:reserveReadByUser }
+
+Stat:
+    path:     /Stat
+    defaults: { _controller: BiblioBundle:Livres:Stat }
+
+StatLike:
+    path:     /StatLike
+    defaults: { _controller: BiblioBundle:Livres:StatLike }
+
+
+ajax_search:
+    path:     /search
+    defaults: { _controller: BiblioBundle:Livres:search }
+
+ListeEmpreinte:
+    path:     /ListeEmpreinte
+    defaults: { _controller: BiblioBundle:Livres:ListeEmpreinte }
+
+ListFav:
+    path:     /ListFav
+    defaults: { _controller: BiblioBundle:Livres:ListFav }
+
+
+dislikeL:
+    path:     /dislike{id}
+    defaults: { _controller: BiblioBundle:Livres:dislike }
+
+like:
+    path:     /like{id}
+    defaults: { _controller: BiblioBundle:Livres:like }
+
+BestLivre:
+    path:     /BestLivre
+    defaults: { _controller: BiblioBundle:Livres:BestLivre }
+
+ImpLivre:
+    path:     /imp
+    defaults: { _controller: BiblioBundle:Livres:imp }
+    methods:  GET
+
+show:
+    path:     /{id}/show
+    defaults: { _controller: BiblioBundle:Livres:show }
+    methods:  GET
+

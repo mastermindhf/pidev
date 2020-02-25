@@ -1,0 +1,19 @@
+{% extends 'Back/backE.html.twig' %}
+
+{% block body %}
+    <h1 style="color: salmon;text-align: center"> Appuyer pour consulter les question des quiz </h1>
+    <table class="table table-striped">
+        {% for c in Cours %}
+            <tr align="center">
+
+                <td>
+
+
+                    <a href="{{ path('AfficherQuestion',{'id':c.id}) }}"><h3>{{ c.libelle }}</h3></a>
+
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+

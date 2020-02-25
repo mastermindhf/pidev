@@ -1,0 +1,38 @@
+{% extends 'Back/backE.html.twig' %}
+{% block body %}
+    <table class="table table-striped">
+        {{ form_start(form) }}
+        <tr>
+
+            <td>{{ form_label(form.question) }}</td>
+            <td>{{ form_widget(form.question) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.reponse) }}</td>
+            <td>{{ form_widget(form.reponse) }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ form_label(form.reponse1) }}</td>
+            <td>{{ form_widget(form.reponse1) }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ form_label(form.juste) }}</td>
+            <td>{{ form_widget(form.juste) }}</td>
+
+        </tr>
+
+        <tr>
+            <td>{{ form_label(form.cours) }}</td>
+            <td>{{ form_widget(form.cours) }}</td>
+
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{ form_widget(form.Modifier, { 'attr': {'class': 'btn btn-info  '}} ) }}</td>
+
+            {{ form_end(form) }}
+    </table>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+
+{% extends 'Back/back.html.twig' %}
+{% block body %}
+<br> <br>
+    {% if p.prof.id != null %}
+    <h3>emploi de {{ p.prof.nom }}</h3> <br>
+<table border="1">
+        <tr>
+
+            <td> jour</td>
+            <td> heure</td>
+            <td>prof</td>
+            <td>salle</td>
+            <td>Modifier</td>
+            <td>Supprimer</td>
+
+
+
+        </tr>
+
+        {% for ee in e %}
+        <tr>
+
+            <td>{{ ee.jour.libelle }}</td>
+            <td>{{  ee.heure.libelle}}</td>
+            <td>{{  ee.prof.nom}}</td>
+            <td>{{  ee.classe.libelle}}</td>
+            <td><a href="{{ path('modifierEmploi',{'id':ee.id}) }}"><i class="fa fa-edit" style="color:#2e6da4 " ></i></a></td>
+            <td><a href="{{ path('supprimerEmploi',{'id':ee.id}) }}"><i class="fa fa-trash" style="color: #ff6c5f"></i></a></td>
+
+
+
+
+
+            {% endfor %}
+
+    </table>
+    <br>     <br>
+    <br>
+    <td> <a href={{ path('afficherEmploi',{'id':p.prof.id} )}}> vue réelle</a></td>
+{% else %}
+        emploi vide pour le moment
+    {% endif %}
+{% endblock %}

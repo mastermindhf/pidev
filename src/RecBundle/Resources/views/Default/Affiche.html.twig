@@ -1,0 +1,26 @@
+{% extends 'Front/accueil.html.twig' %}
+{% block rec %}
+<table  class="table table-striped" style="background-color: #49bdb9">
+    <h1>Listes des réclamations</h1>
+    <tr><td>Message</td>
+        <td><b>Modifier</b></td>
+        <td><b>Supprimer</b></td>
+    </tr>
+
+
+    {% for cc in c %}
+        <tr>
+            <td>{{ cc.message}}</td>
+            <td><a href="{{ path('ModifierRec',{'id':cc.id}) }}"><i class="fa fa-edit" style="color:#2e6da4 " ></i></a></td>
+            <td><a href="{{ path('SupprimerRec',{'id':cc.id}) }}"><i class="fa fa-trash" style="color: #ff6c5f"></i></a></td>
+
+       </tr>
+    {% endfor %}
+</table><br>
+<a href="{{ path('ImpRec') }}">Imprimer</a>
+
+
+
+
+
+{% endblock %}

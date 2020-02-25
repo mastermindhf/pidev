@@ -1,0 +1,34 @@
+{% extends 'Back/backE.html.twig' %}
+{% block body %}
+    {% set i=0 %}
+    <form action="{{ path('score') }}" method="post">
+        {% for r in r %}
+            {% set array=[ r.question.question] %}
+            {% if i==0 %}
+                <h3>{{ array[0] }} ?</h3>
+
+                {% set i=1 %}
+            {% endif %}
+
+            <ul>
+                <li>{{ r.reponse }}</li>
+
+                <input type="checkbox" value="{{ r.id }}" name="rep[]">
+
+            </ul>
+
+
+        {% endfor %}
+        <input type="number" {% for r in r %}value="{{ r.question.id }}"{% endfor %} hidden name="q">
+        {% set i=0 %}
+        {% for r in r %}
+            {% set array=[ r.question.id] %}
+            {% if i==0 %}
+                {{ array[0]+1 }}
+                {% set i=1 %}
+            {% endif %}
+        {% endfor %}
+        <input type="submit">
+
+    </form>
+{% endblock %}

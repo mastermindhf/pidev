@@ -1,0 +1,19 @@
+{% extends 'Front/accueil.html.twig' %}
+{% block rec %}
+    <table class="table table-striped" >
+        {{ form_start(form) }}
+        <tr style="background-color: #49bdb9">
+
+            <td>{{ form_label(form.message) }}</td>
+            <td>{{ form_widget(form.message) }}</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>{{ form_widget(form.Modifier, { 'attr': {'class': 'btn btn-warning  '}} ) }}</td>
+
+            {{ form_end(form) }}
+    </table>
+    <a href="{{ path('') }}"></a>
+
+{% endblock %}

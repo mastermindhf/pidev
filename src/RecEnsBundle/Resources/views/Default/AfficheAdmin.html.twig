@@ -1,0 +1,20 @@
+{% extends 'Back/back.html.twig' %}
+{% block body %}
+    <table  class="table table-striped">
+        <h1>Listes des réclamations</h1>
+        <tr><td>Message</td>
+            <td>Enseignant</td>
+
+
+        </tr>
+
+
+        {% for cc in c %}
+            <tr>
+                <td>{{ cc.message}}</td>
+                <td>{{ cc.ens }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

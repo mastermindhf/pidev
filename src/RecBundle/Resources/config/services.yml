@@ -1,0 +1,4 @@
+services:
+#    rec.example:
+#        class: RecBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

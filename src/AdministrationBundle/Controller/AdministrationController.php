@@ -4,6 +4,7 @@ namespace AdministrationBundle\Controller;
 
 use AdministrationBundle\Entity\etudiant;
 use AdministrationBundle\Form\etudiantType;
+use FOS\MessageBundle\Tests\Functional\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -29,5 +30,8 @@ class AdministrationController extends Controller
         return $this->render('@Administration/Default/ajout.html.twig', array('f' => $form1));
 
     }
+
+
+
 
 }

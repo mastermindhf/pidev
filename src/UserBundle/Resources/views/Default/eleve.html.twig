@@ -1,0 +1,28 @@
+{% extends 'Front/EhomeE.html.twig' %}
+{% block content %}
+    {{ render(path('ListFav')) }}
+    <!-- stats section -->
+
+    <!-- //stats section -->
+
+{% endblock %}
+{% block stat %}
+    <table class="table table"><tr align="center"><td> {{ render(path('StatLike')) }}</td></tr></table>
+
+{% endblock %}
+
+{% block logout %}
+    <li>
+        <!-- First Tier Drop Down -->
+
+        <a href="#"> <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+        <input type="checkbox" id="drop-2"/>
+        <ul>
+
+            <li><a href="{{ path('fos_user_security_logout') }}" class="drop-text">Logout</a></li>
+            <li>{{ u.username }}</li>
+        </ul>
+    </li>
+
+
+{% endblock %}

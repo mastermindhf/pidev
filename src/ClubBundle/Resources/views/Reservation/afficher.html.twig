@@ -1,0 +1,47 @@
+{% extends 'Back/back.html.twig' %}
+
+{% block title %}Afficher{% endblock %}
+
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <h1>Clubs List</h1>
+
+    <table border="1">
+        <tr>
+            <th>ID Réservation</th>
+            <th>Etat</th>
+            <th>Event Réservé</th>
+            <th>Eleve participant</th>
+            <th>Delete</th>
+            <th>Update</th>
+            <th>Show</th>
+        </tr>
+
+        {% for r in res %}
+        <tr>
+            <td> {{ r.id }}</td>
+            <td> {{ r.nom }}</td>
+            <td> {{ r.idEvent.id }}</td>
+            <td> {{ r.idEleve.id }}</td>
+            <td>
+                <center><a  class="fa fa-trash" href="{{ path('_supprimerRes',{'id':r.id}) }}"></a></center>
+            </td>
+            <td>
+                <center>
+                    <a class="fa fa-upload" href="{{ path('_modifierRes',{'id':r.id}) }}"></a>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <a class="fa fa-share" href="{{ path('_afficherResID',{'id':r.id}) }}"></a>
+                </center>
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+    <ul>
+        <li><a class="fa fa-plus" href="{{ path('_ajouterRes') }}"> New Club</a></li>
+    </ul>
+{% endblock %}

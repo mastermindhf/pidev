@@ -7,18 +7,24 @@ user_admin:
 user_parent:
   path:     /access/parent
   defaults: { _controller: UserBundle:Default:parent }
+
+
 user_eleve:
   path:     /access/eleve
-  defaults: { _controller: UserBundle:Default:eleve }
+  defaults: { _controller: UserBundle:Default:eleve}
 user_enseignant:
   path:     /access/enseignant
   defaults: { _controller: UserBundle:Default:enseignant }
 club:
   path:     /access/club
-  defaults: { _controller: UserBundle:Default:club }
+  defaults: { _controller: UserBundle:Default:club  }
 home:
   path:     /home
   defaults: { _controller: UserBundle:Default:home }
 session:
   path:     /home
   defaults: { _controller: FosUserBundle:Default:security }
+
+StatIndexBP:
+  path:     /access/stat
+  defaults: { _controller: BiblioBundle:Livres:StatIndexBP }

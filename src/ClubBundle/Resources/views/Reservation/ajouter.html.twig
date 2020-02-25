@@ -1,0 +1,24 @@
+{% extends "Back/back.html.twig" %}
+
+
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <h1>Reservation</h1>
+    <table class="table-striped">
+        {{ form_start(f) }}
+        <tr>
+            <td>{{ form_label(f.etat) }}</td>
+            <td>{{ form_widget(f.etat) }}</td>
+        </tr>     <tr>
+            <td>{{ form_label(f.idEvent) }}</td>
+            <td>{{ form_widget(f.idEvent) }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{ form_widget(f.confirmer) }}</td>
+        </tr>
+        {{ form_end(f) }}
+    </table>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% block body %}
+    <table class="table table-hover">
+        <tr>
+            <td>Place</td>
+            <td>Plat</td>
+            <td>Likes</td>
+        </tr>
+{% set x=0 %}
+    {% for tt in top %}
+{% set x=x+1 %}
+<tr id="{{ x }}"><td id="{{ x }}a">{{ x }}</td>
+    <td>{{ tt.libelle }}</td>
+    <td>{{ tt.likes }} likes</td>
+</tr>
+           <br>
+
+    {% endfor %}
+    </table>
+{% endblock %}
+{% block js %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        $('#1').css("background-color", "gold");
+        $('#1a').append(' 🥇');
+        $('#2a').append(' 🥈');
+        $('#3a').append(' 🥉');
+        $('#2').css("background-color", "silver");
+        $('#3').css("background-color", "#cd7f32")
+
+    </script>
+{% endblock %}

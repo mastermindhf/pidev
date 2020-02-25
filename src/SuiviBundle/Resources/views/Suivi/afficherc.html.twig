@@ -1,0 +1,23 @@
+{% extends 'Back/back.html.twig' %}
+{% block body %}
+    <table class="table table-striped">
+    <tr align="center"  >
+    <td><b>libelle</b></td>
+    <td><b>Listes Eleves</b></td>
+    <td><b>Absence</b></td>
+    <td><b>Note</b></td>
+    </tr>
+{% for cc in cl   %}
+    <tr align=" center" >
+ <td>  {{ cc.libelle }} </td>
+        <td><a href="{{ path('ajoutla', {'id': cc.id }) }}"><i class="fa fa-edit" style="color:#2e6da4 " ></i>Afficher liste Eleves</a></td>
+  <td>  <a href="{{ path('affichela', {'id': cc.id }) }}"><i class="fa fa-edit" style="color:#2e6da4 " ></i>Afficher les cas d'absence</a></td>
+<td>    <a href="{{ path('affichernc', {'idc': cc.id }) }}"><i class="fa fa-edit" style="color:#2e6da4 " ></i>Afficher les notes</a></td>
+
+</tr>
+
+
+{% endfor %}
+    </table>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+rec_ens_homepage:
+    path:     /
+    defaults: { _controller: RecEnsBundle:Default:index }
+_ajout_ens:
+    path:     /Ajout
+    defaults: { _controller: RecEnsBundle:RecEns:Ajout }
+_affiche_ens:
+    path:     /Affiche
+    defaults: { _controller: RecEnsBundle:RecEns:Affiche }
+ModifierRecEns:
+    path:     /ModifierRecens/{id}
+    defaults: { _controller: RecEnsBundle:RecEns:ModifierRecens }
+SupprimerRecens:
+    path:     /SupprimerRecens/{id}
+    defaults: { _controller: RecEnsBundle:RecEns:SupprimerRecens }
+
+ImpRecEns:
+    path:     /imp
+    defaults: { _controller: RecEnsBundle:RecEns:imp }
+    methods:  GET
+_affiche_ensAd:
+    path:     /AfficheAdmin
+    defaults: { _controller: RecEnsBundle:RecEns:AfficheAdmin }

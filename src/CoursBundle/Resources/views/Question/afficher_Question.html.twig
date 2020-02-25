@@ -1,0 +1,37 @@
+{% extends 'Back/backE.html.twig' %}
+
+{% block body %}
+    {% if q !=0 %}
+        <table class="table table-striped">
+            <tr align="center">
+                <td><b>ID</b></td>
+                <td><b>Question</b></td>
+                <td><b>Cours</b></td>
+
+                <td colspan="2"><b>Actions</b></td>
+
+
+            </tr>
+            {% for c in Question %}
+
+
+                <tr align=" center">
+                    <td>{{ c.id }}</td>
+                    <td>{{ c.Question }}</td>
+                    <td>{{ c.cours.id }}</td>
+
+
+                    <td><a href="{{ path('ModifierQuestion',{'id':c.id}) }}"><i class="fa fa-edit"
+                                                                                style="color:#2e6da4 "></i></a></td>
+                    <td><a href="{{ path('SupprimerQuestion',{'id':c.id}) }}"><i class="fa fa-trash"
+                                                                                 style="color: #ff6c5f"></i></a></td>
+                </tr>
+
+
+            {% endfor %}
+        </table>
+    {% else %}
+        <h1 style="color: #ff6c5f   ;text-align: center">Table Vide !! 👻 </h1>
+    {% endif %}
+{% endblock %}
+
