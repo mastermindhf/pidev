@@ -2,7 +2,9 @@
 
 namespace SuiviBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Gregwar\CaptchaBundle\Type\CaptchaType;
+use SuiviBundle\Entity\Eleve;
 use SuiviBundle\Entity\Matiere;
 use SuiviBundle\Entity\Note;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -18,7 +20,19 @@ class NoteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('valeur')->add('matiere', EntityType::class, [
+        $builder->add('eleve', EntityType::class, [
+
+                'class' => Eleve::class,
+
+
+                'choice_label' => 'nom',
+
+
+            ]
+
+
+        )
+            ->add('valeur')->add('matiere', EntityType::class, [
 
                 'class' => Matiere::class,
 
@@ -47,6 +61,5 @@ class NoteType extends AbstractType
     {
         return 'suivibundle_note';
     }
-
 
 }

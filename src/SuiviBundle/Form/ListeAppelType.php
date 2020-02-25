@@ -2,7 +2,9 @@
 
 namespace SuiviBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use SuiviBundle\Entity\Classe;
+use SuiviBundle\Entity\Eleve;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -18,7 +20,20 @@ class ListeAppelType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('date')
+
+        $builder->add('eleve', EntityType::class, [
+
+                'class' => Eleve::class,
+
+
+                'choice_label' => 'nom',
+
+
+            ]
+
+
+        )
+            ->add('date')
 
             ->add('Ajout',SubmitType::class,['attr'=>['formnovalidate'=>'formnovalidate']])
             ;;

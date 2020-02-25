@@ -90,36 +90,36 @@
               transform: rotate(45deg);
           }
       </style>
-    <script>
-        var n = [];
-        $(document).ready(function(){
-            {% for m in mats %}
-            $("#{{ m.libelle}}").change(function(){
+      <script>
+          var n = [];
+          $(document).ready(function(){
+              {% for m in mats %}
+              $("#{{ m.libelle}}").change(function(){
 
-                if(n.indexOf("{{ m.libelle }}") === -1)
-                    n.push("{{ m.libelle }}");
-                else
-                    n.splice(n.indexOf("{{ m.libelle }}"), 1);
-                if(n.length>0) {
-                    {% for mm in mats %}
-                    if (n.indexOf("{{ mm.libelle }}") === -1)
-                        $(".{{ mm.libelle }}").hide();
+                  if(n.indexOf("{{ m.libelle }}") === -1)
+                      n.push("{{ m.libelle }}");
+                  else
+                      n.splice(n.indexOf("{{ m.libelle }}"), 1);
+                  if(n.length>0) {
+                      {% for mm in mats %}
+                      if (n.indexOf("{{ mm.libelle }}") === -1)
+                          $(".{{ mm.libelle }}").hide();
 
-                    else
+                      else
 
-                        $(".{{ mm.libelle }}").show();
-                    {% endfor %}
-                }
-                else{
-                    {% for mm in mats %}
-                    $(".{{ mm.libelle }}").show();
-                    {% endfor %}
-                }
+                          $(".{{ mm.libelle }}").show();
+                      {% endfor %}
+                  }
+                  else{
+                      {% for mm in mats %}
+                      $(".{{ mm.libelle }}").show();
+                      {% endfor %}
+                  }
 
-            });
-            {% endfor %}
-        });
-    </script>
+              });
+              {% endfor %}
+          });
+      </script>
 
       <script type="text/javascript">
           jQuery(document).ready(function() {
@@ -166,51 +166,63 @@
               });
           });
       </script>
+      <script>
+          $(function() {
+              $("#bm").click(function () {
 
-      {% endblock %}
+                          alert("Votre moyenne est: {{ mm }}");
+
+              });
+          });
+
+      </script>
+  {% endblock %}
 
     {% block body %}
-    {% for m in mats %}
+        {% for m in mats %}
 
-<label class="container">{{ m.libelle }}
-    <input type="checkbox" value="{{ m.libelle }}" id="{{ m.libelle }}">
-    <span class="checkmark"></span>
+            <label class="container">{{ m.libelle }}
+                <input type="checkbox" value="{{ m.libelle }}" id="{{ m.libelle }}">
+                <span class="checkmark"></span>
 
-</label>
-{% endfor %}
-
-
-
-<table id="tab" class="table table-striped">
-    <tr align="center" >
-
-        <th>Nom</th>
-        <th>Prenom</th>
-        <th>Matiere</th>
-        <th>Note</th>
-        <th class="bs">Supprimer</th>
-        <th class="bs">Modifier</th>
-    </tr>
-    {% for cc in n %}
-
-        <tr align="center"  class="{{ cc.matiere.libelle }}">
-            <td>{{ cc.eleve.nom}}</td>
-            <td>{{ cc.eleve.prenom }}</td>
-            <td>{{ cc.matiere.libelle}}</td>
-            <td>{{ cc.valeur}}</td>
-            <td class="bs"><a href="{{ path('Deleten', {'id': cc.id }) }}"><i class="fa fa-trash" style="color: #ff6c5f"></i></a></td>
-            <td class="bs"><a href="{{ path('Updaten', {'id': cc.id }) }}"><i class="fa fa-edit" style="color:#2e6da4 " ></i></a></td>
+            </label>
+        {% endfor %}
 
 
 
+        <table id="tab" class="table table-striped">
+            <tr align="center" >
 
-        </tr>
-    {% endfor %}
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Matiere</th>
+                <th>Note</th>
+                <th class="bs">Supprimer</th>
+                <th class="bs">Modifier</th>
+            </tr>
+            {% for cc in n %}
 
-</table>
+                <tr align="center"  class="{{ cc.matiere.libelle }}">
+                    <td>{{ cc.eleve.nom}}</td>
+                    <td>{{ cc.eleve.prenom }}</td>
+                    <td>{{ cc.matiere.libelle}}</td>
+                    <td>{{ cc.valeur}}</td>
+                    <td class="bs"><a href="{{ path('Deletenn', {'id': cc.id }) }}"><i class="fa fa-trash" style="color: #ff6c5f"></i></a></td>
+                    <td class="bs"><a href="{{ path('Updaten', {'id': cc.id }) }}"><i class="fa fa-edit" style="color:#2e6da4 " ></i></a></td>
+
+
+
+
+                </tr>
+            {% endfor %}
+
+        </table>
+
         <form>
             <input id="impression" name="impression" type="button" onclick="imprimer_page()" value="Imprimer cette page" />
         </form>
 
-
-{% endblock %}
+        <form>
+            <button id="bm">Calculer Moyenne</button>
+        </form>
+    {% endblock %}

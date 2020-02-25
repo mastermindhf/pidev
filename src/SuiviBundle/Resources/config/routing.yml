@@ -57,3 +57,6 @@ afficherne2:
   path:     /Afficherne2/{ide}
   defaults: { _controller: SuiviBundle:Note:Afficherne2 }
 
+Deletenn:
+  path:   /Deletenn/{id}
+  defaults: {_controller: SuiviBundle:Note:Deletenn}
