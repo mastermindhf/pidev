@@ -9,7 +9,7 @@ creer_emploi:
 
 ajouterProf:
     path:     /ajouterProf
-    defaults: { _controller: CalendrierBundle:prof:ajouterProf }
+    defaults: { _controller: CalendrierBundle:Prof:ajouterProf }
 afficherProf:
     path:     /afficherProf
     defaults: { _controller: CalendrierBundle:Calendrier:afficherProf }

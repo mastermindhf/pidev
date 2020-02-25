@@ -193,10 +193,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                             <ul class="treeview-menu">
                                 <li><a href="login.html"><i class="fa fa-angle-right"></i> Login</a></li>
-                                <li><a href="signup.html"><i class="fa fa-angle-right"></i> Register</a></li>
-                                <li><a href="404.html"><i class="fa fa-angle-right"></i> 404 Error</a></li>
-                                <li><a href="500.html"><i class="fa fa-angle-right"></i> 500 Error</a></li>
-                                <li><a href="blank-page.html"><i class="fa fa-angle-right"></i> Blank Page</a></li>
+
                             </ul>
                         </li>
 
@@ -394,6 +391,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <div class="profile_img">
                                 <span class="prfil-img"><img src="{{ asset('Back/images/1.jpg') }}" alt=""> </span>
                                 <div class="user-name">
+                                    <p></p>
+                                    <p>{{ app.user.username}}</p>
+                                </div>
 {% block user %}
                                     {% endblock %}
 

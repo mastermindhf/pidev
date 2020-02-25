@@ -1,7 +1,12 @@
 {% extends 'Back/back.html.twig' %}
 {% block body %}
-    <table class="table table-striped">
+    <script src="{{ asset('sorttable.js') }}"></script>
+    <table class="table table-striped ">
         {{ form_start(form) }}
+        <tr hidden>
+            <td>{{ form_label(form.eleve) }}</td>
+            <td>{{ form_widget(form.eleve) }}</td>
+        </tr>
         <tr>
 
             <td>{{ form_label(form.date) }}</td>

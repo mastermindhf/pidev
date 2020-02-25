@@ -2,6 +2,7 @@
 
 namespace SuiviBundle\Controller;
 
+use Doctrine\ORM\EntityRepository;
 use SuiviBundle\Entity\Classe;
 use SuiviBundle\Entity\Eleve;
 use SuiviBundle\Entity\ListeAppel;
@@ -11,6 +12,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use UserBundle\Entity\User;
 use UserBundle\Form\RegistrationType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class SuiviController extends Controller
 {
@@ -34,7 +37,27 @@ class SuiviController extends Controller
         $la=new ListeAppel();
         $eleve1=$this->getDoctrine()->getRepository(User::class)->Find($ide);
         $classe=$this->getDoctrine()->getRepository(Classe::class)->find($idc);
-        $Form=$this->createForm(ListeAppelType::class,$la);
+        $Form=$this->createFormBuilder($la)
+            ->add('eleve', EntityType::class, [
+
+                    'class' => User::class,
+                    'query_builder' => function (EntityRepository $er) use ($ide) {
+                        return $er->createQueryBuilder('u')
+                            ->where('u.id =:id')->setParameter('id',$ide);
+                    },
+
+
+
+                    'choice_label' => 'nom',
+
+
+                ]
+
+
+            ) ->add('date')
+
+            ->add('Ajout',SubmitType::class,['attr'=>['formnovalidate'=>'formnovalidate']])
+            ->getForm();
         $Form->handleRequest($request);
         $em=$this->getDoctrine()->getManager();
         if($Form->isSubmitted() && $Form->isValid()) {

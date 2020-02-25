@@ -15,7 +15,8 @@
    {% endblock %}
 {% block body %}
 Classe: {{ cl.libelle }}
-<table class="table table-striped" id="entitiesNav">
+    <script src="{{ asset('sorttable.js') }}"></script>
+<table class="table table-striped sortable" id="entitiesNav">
     <tr align="center">
 
         <th>Nom</th>
@@ -81,7 +82,7 @@ Classe: {{ cl.libelle }}
                                             if (id !== 'error') {
                                                 console.log(value[1]);
 
-                                                entitySelector.append('<table class="table table-striped" >\n' +
+                                                entitySelector.append('<table class="table table-striped sortable" >\n' +
                                                     '    <tr align="center">\n' +
                                                     '\n' +
                                                     '        <th>Nom</th>\n' +

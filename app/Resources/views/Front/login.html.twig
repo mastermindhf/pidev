@@ -59,26 +59,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <input type="checkbox" id="drop" />
                     <ul class="menu">
                         <li><a href="{{ path('session') }}">Home</a></li>
-                        <li><a href="index.html">About</a></li>
-                        <li><a href="index.html">Join Now</a></li>
-                        <li>
-                            <!-- First Tier Drop Down -->
-                            <label for="drop-2" class="toggle toogle-2">Pages <span class="fa fa-angle-down"
-                                                                                    aria-hidden="true"></span>
-                            </label>
-                            <a href="#">Pages <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-                            <input type="checkbox" id="drop-2" />
-                            <ul>
-                                <li><a href="index.html" class="drop-text">Events</a></li>
-                                <li><a href="index.html" class="drop-text">What We Do?</a></li>
-                                <li><a href="index.html" class="drop-text">Popular Courses</a></li>
-                                <li><a href="index.html" class="drop-text">Statistics</a></li>
-                                <li><a href="index.html" class="drop-text">Gallery</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="index.html">Contact</a></li>
-                            <li><a href="{{ path('user_homepage') }}">Login</a></li>
-                        <li><a href="register.html">Register</a></li>
+
+
+
+
+                            <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                        <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
                     </ul>
                 </nav>
             </div>

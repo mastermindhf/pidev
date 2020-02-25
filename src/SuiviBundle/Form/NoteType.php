@@ -4,7 +4,7 @@ namespace SuiviBundle\Form;
 
 use Doctrine\ORM\EntityRepository;
 use Gregwar\CaptchaBundle\Type\CaptchaType;
-use SuiviBundle\Entity\Eleve;
+
 use SuiviBundle\Entity\Matiere;
 use SuiviBundle\Entity\Note;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;

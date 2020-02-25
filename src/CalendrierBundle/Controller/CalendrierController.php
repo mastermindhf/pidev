@@ -85,10 +85,10 @@ class CalendrierController extends Controller
 
     public function afficherEmploiAction($id)
     {
-        $rep = $this->getDoctrine()->getRepository(Calendrier::class)->findByProf($id);
-        $p=$this->getDoctrine()->getRepository(Calendrier::class)->findOneByProf($id);
+        $user=$this->getUser();
+        $rep = $this->getDoctrine()->getRepository(Calendrier::class)->findByProf($user);
 
-        return $this->render('@Calendrier/Calendrier/afficher_emploi.html.twig', array("e" => $rep ,"p"=>$p));
+        return $this->render('@Calendrier/Calendrier/afficher_emploi.html.twig', array("e" => $rep ));
 
 
 
@@ -119,7 +119,7 @@ class CalendrierController extends Controller
     public function afficherProfAction()
     {
 
-        $e = $this->getDoctrine()->getRepository(\UserBundle\Entity\User::class)->findEns();
+        $e = $this->getDoctrine()->getRepository(\UserBundle\Entity\User::class)->findAll();
 
 
 
