@@ -1,0 +1,228 @@
+{% extends 'Back/back.html.twig' %}
+{% block search %}
+    <div class="search-box">
+        <form class="input">
+            <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search"
+                   id="input-31"/>
+            <label class="input__label" for="input-31">
+                <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                    <path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+                </svg>
+            </label>
+        </form>
+    </div>
+
+{% endblock %}
+
+  {%  block js %}
+      <script type="text/javascript">
+          function imprimer_page(){
+              window.print();
+          }
+      </script>
+      <link rel="stylesheet" href="{{ asset ('Back/css/print.css')}}" type="text/css" media="print" />
+      <style>
+          /* The container */
+          .container {
+              display: block;
+              position: relative;
+              padding-left: 35px;
+              margin-bottom: 12px;
+              cursor: pointer;
+              font-size: 22px;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+          }
+
+          /* Hide the browser's default checkbox */
+          .container input {
+              position: absolute;
+              opacity: 0;
+              cursor: pointer;
+              height: 0;
+              width: 0;
+          }
+
+          /* Create a custom checkbox */
+          .checkmark {
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 25px;
+              width: 25px;
+              background-color: #eee;
+          }
+
+          /* On mouse-over, add a grey background color */
+          .container:hover input ~ .checkmark {
+              background-color: #ccc;
+          }
+
+          /* When the checkbox is checked, add a blue background */
+          .container input:checked ~ .checkmark {
+              background-color: #2196F3;
+          }
+
+          /* Create the checkmark/indicator (hidden when not checked) */
+          .checkmark:after {
+              content: "";
+              position: absolute;
+              display: none;
+          }
+
+          /* Show the checkmark when checked */
+          .container input:checked ~ .checkmark:after {
+              display: block;
+          }
+
+          /* Style the checkmark/indicator */
+          .container .checkmark:after {
+              left: 9px;
+              top: 5px;
+              width: 5px;
+              height: 10px;
+              border: solid white;
+              border-width: 0 3px 3px 0;
+              -webkit-transform: rotate(45deg);
+              -ms-transform: rotate(45deg);
+              transform: rotate(45deg);
+          }
+      </style>
+      <script>
+          var n = [];
+          $(document).ready(function(){
+              {% for m in mats %}
+              $("#{{ m.libelle}}").change(function(){
+
+                  if(n.indexOf("{{ m.libelle }}") === -1)
+                      n.push("{{ m.libelle }}");
+                  else
+                      n.splice(n.indexOf("{{ m.libelle }}"), 1);
+                  if(n.length>0) {
+                      {% for mm in mats %}
+                      if (n.indexOf("{{ mm.libelle }}") === -1)
+                          $(".{{ mm.libelle }}").hide();
+
+                      else
+
+                          $(".{{ mm.libelle }}").show();
+                      {% endfor %}
+                  }
+                  else{
+                      {% for mm in mats %}
+                      $(".{{ mm.libelle }}").show();
+                      {% endfor %}
+                  }
+
+              });
+              {% endfor %}
+          });
+      </script>
+
+      <script type="text/javascript">
+          jQuery(document).ready(function() {
+              var searchRequest = null;
+              $("#input-31").keyup(function() {
+                  var minlength = 1;
+                  var that = this;
+                  var value = $(this).val();
+                  var entitySelector = $("#tab").html('');
+                  if (value.length >= minlength ) {
+                      if (searchRequest != null)
+                          searchRequest.abort();
+                      searchRequest = $.ajax({
+                          type: "GET",
+                          url: "{{ path('ajax_search') }}",
+                          data: {
+                              'q' : value
+                          },
+                          dataType: "text",
+                          success: function(msg){
+
+                              if (value===$(that).val()) {
+                                  var result = JSON.parse(msg);
+
+                                  $.each(result, function(key, arr) {
+                                      $.each(arr, function(id, value) {
+                                          if (key === 'rec') {
+                                              if (id !== 'error') {
+                                                  console.log(value[1]);
+                                                  entitySelector.append('<li><b>'+value[0]+'</b>&nbsp'+'<b>'+value[1]+'</b></a></li>');
+                                              }else {
+                                                  entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                              }
+                                          }
+                                      });
+                                  });
+
+
+
+                              }
+                          }
+                      });
+                  }
+              });
+          });
+      </script>
+      <script>
+          $(function() {
+              $("#bm").click(function () {
+
+                          alert("Votre moyenne est: {{ mm }}");
+
+              });
+          });
+
+      </script>
+  {% endblock %}
+
+    {% block body %}
+        {% for m in mats %}
+
+            <label class="container">{{ m.libelle }}
+                <input type="checkbox" value="{{ m.libelle }}" id="{{ m.libelle }}">
+                <span class="checkmark"></span>
+
+            </label>
+        {% endfor %}
+
+
+        <script src="{{ asset('sorttable.js') }}"></script>
+        <table id="tab" class="table table-striped sortable">
+            <tr align="center" >
+
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Matiere</th>
+                <th>Note</th>
+                <th class="bs">Supprimer</th>
+                <th class="bs">Modifier</th>
+            </tr>
+            {% for cc in n %}
+
+                <tr align="center"  class="{{ cc.matiere.libelle }}">
+                    <td>{{ cc.eleve.nom}}</td>
+                    <td>{{ cc.eleve.prenom }}</td>
+                    <td>{{ cc.matiere.libelle}}</td>
+                    <td>{{ cc.valeur}}</td>
+                    <td class="bs"><a href="{{ path('Deletenn', {'id': cc.id }) }}"><i class="fa fa-trash" style="color: #ff6c5f"></i></a></td>
+                    <td class="bs"><a href="{{ path('Updaten', {'id': cc.id }) }}"><i class="fa fa-edit" style="color:#2e6da4 " ></i></a></td>
+
+
+
+
+                </tr>
+            {% endfor %}
+
+        </table>
+
+        <form>
+            <input id="impression" name="impression" type="button" onclick="imprimer_page()" value="Imprimer cette page" />
+        </form>
+
+        <form>
+            <button id="bm">Calculer Moyenne</button>
+        </form>
+    {% endblock %}
