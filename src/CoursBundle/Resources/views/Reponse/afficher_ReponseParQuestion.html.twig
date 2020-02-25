@@ -1,0 +1,18 @@
+{% extends 'Back/backE.html.twig' %}
+
+{% block body %}
+    <h1 style="color: salmon;text-align: center"> Appuyer pour consulter les Reponses des questions </h1>
+    <table class="table table-striped">
+        {% for c in Question %}
+            <tr align="center">
+
+                <td>
+
+
+                    <a href="{{ path('AfficherReponse',{'id':c.id}) }}"><h3>{{ c.question }}</h3></a>
+
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

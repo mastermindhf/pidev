@@ -1,0 +1,119 @@
+{% extends 'Back/back.html.twig' %}
+{% block search %}
+    <div class="search-box">
+        <form class="input">
+            <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search"
+                   id="input-31"/>
+            <label class="input__label" for="input-31">
+                <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                    <path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+                </svg>
+            </label>
+        </form>
+    </div>
+{% endblock %}
+{% block body %}
+          <!-- /input-group -->
+<br><br><br><br><br><br><br><br><br><br>
+    <td class="nav" id="side-menu">
+        <td>
+            <ul class="nav nav-second-level" id="entitiesNav">
+            </ul>
+        </td>
+    </td>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#input-31").keyup(function() {
+                var minlength = 1;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#entitiesNav").html('');
+                if (value.length >= minlength ) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('ajax_search') }}",
+                        data: {
+                            'p' : value
+                        },
+                        dataType: "text",
+                        success: function(msg){
+                            //we need to check if the value is the same
+                            if (value===$(that).val()) {
+                                var result = JSON.parse(msg);
+                                $.each(result, function(key, arr) {
+                                    $.each(arr, function(id, value) {
+                                        if (key === 'posts') {
+                                            if (id !== 'error') {
+                                                console.log(value[1]);
+                                                entitySelector.append('<li><b>'+value[0]+'</b><a href="/biblio/'+id+'+/show"></a></li>');
+                                            } else {
+                                                entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                            }
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+<a href="imp" class="btn btn-info" >Imprimer</a>
+    <h1>Liste des Livres</h1>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Auteur</th>
+
+            <th>Nb d'emprunte</th>
+            <th>quantite</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Nb Likes</th>
+            <th>nb Dislikes</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+
+        {% for cc in list %}
+            <tr>
+                <td scope="row">{{ cc.idLivre }}</td>
+                <td>{{ cc.nom }}</td>
+                <td>{{ cc.auteur }}</td>
+                <td>{{ cc.nbpersonnes }}</td>
+                <td>{{ cc.quantite }}</td>
+                <td>{{ cc.description }}</td>
+                <td class="fa-image" height="100px" width="200px" style="background-image: url('{{ asset('images/' ~ cc.image) }}')">
+                <td>{{ cc.likes }}</td>
+                <td>{{ cc.dislikes }}</td>
+
+                <td>
+                    <center><a class="fa fa-trash" id="delete" style="color: #ff6c5f" href="{{ path('DeleteLivre',{'id':cc.idLivre}) }}"></a></center>
+                </td>
+                <td>
+                    <center><a class="fa fa-edit" style="color:#2e6da4 " href="{{ path('UpdateLivre',{'id':cc.idLivre}) }}"></a></center>
+                </td>
+            </tr>
+        {% endfor %}
+        <div class=" text-center " >{{ knp_pagination_render(list) }}</div>
+    </table>
+    <script>
+        $('#delete').click(function () {
+            $.ajax({
+                success: function (data) {
+                    alert('Livre Supprimer!!!');
+                    $('#delete').prop('disabled', true);
+                }
+            });
+        });
+    </script>
+{% endblock %}

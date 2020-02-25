@@ -1,0 +1,128 @@
+{% extends 'Back/back.html.twig' %}
+   {% block search %}
+       <div class="search-box">
+           <form class="input">
+               <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search"
+                      id="input-31"/>
+               <label class="input__label" for="input-31">
+                   <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                       <path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+                   </svg>
+               </label>
+           </form>
+       </div>
+
+   {% endblock %}
+{% block body %}
+Classe: {{ cl.libelle }}
+<table class="table table-striped" id="entitiesNav">
+    <tr align="center">
+
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Absence</th>
+        <th>Noter</th>
+        <th>Afficher notes</th>
+
+
+
+    </tr>
+
+    {% for ee in e %}
+
+        <tr>
+
+            <td>{{ ee.nom }}</td>
+            <td>{{ ee.prenom }}</td>
+
+            <td>
+        <a href="{{ path('ajouta', {'ide': ee.id,'idc':cl.id }) }}">&nbsp;Marquer Absent</a> </td>
+            <td>
+                <a href="{{ path('ajoutn', {'id': ee.id,'idc': cl.id}) }}">&nbsp;Noter</a> </td>
+            <td>
+                <a href="{{ path('afficherne', {'ide': ee.id }) }}">&nbsp;Notes</a> </td>
+
+
+        </tr>
+
+    {% endfor %}
+
+</table>
+{% endblock %}
+{% block js %}
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#input-31").keyup(function() {
+                var minlength = 1;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#entitiesNav").html('');
+                if (value.length >= minlength ) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('ajax_search') }}",
+                        data: {
+                            'q' : value
+                        },
+                        dataType: "text",
+                        success: function(msg){
+
+                            if (value===$(that).val()) {
+                                var result = JSON.parse(msg);
+
+
+                                $.each(result, function(key, arr) {
+                                    $.each(arr, function(id, value) {
+                                        if (key === 'rec') {
+                                            if (id !== 'error') {
+                                                console.log(value[1]);
+
+                                                entitySelector.append('<table class="table table-striped" >\n' +
+                                                    '    <tr align="center">\n' +
+                                                    '\n' +
+                                                    '        <th>Nom</th>\n' +
+                                                    '        <th>Prenom</th>\n' +
+                                                    '        <th>Absence</th>\n' +
+                                                    '        <th>Noter</th>\n' +
+                                                    '        <th>Afficher notes</th>\n' +
+                                                    '\n' +
+                                                    '\n' +
+                                                    '\n' +
+                                                    '    </tr>\n' +
+                                                    '\n'  +
+                                                    '\n' +
+                                                    '        <tr>\n' +
+                                                    '\n' +
+                                                    '            <td>'+value[0]+'</td>\n' +
+                                                    '            <td>'+value[1]+'</td>\n' +
+                                                '<td><a  {% for ee in e %} href="{{ path('ajouta', {'ide': ee.id,'idc':cl.id}) }}"{% endfor %} >&nbspMarquer Absent</a> '
+                                                    +'</td>\n' +'<td><a {% for ee in e %} href="{{ path('ajoutn', {'id': ee.id,'idc':cl.id}) }}" {% endfor %}>&nbspNoter</a> '
+                                                    +'</td>\n'+
+                                                    '<td><a  href=" {% for ee in e %}{{ path('afficherne', {'ide':ee.id }) }}"{% endfor %} >&nbspNotes</a> '
+                                                    +'</td>\n'+
+
+                                                '\n' +
+                                                    '</tr>'+
+                                                '</table>');
+
+                                            }else {
+                                                entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                            }
+                                        }
+                                    });
+                                });
+
+
+
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+{% endblock %}

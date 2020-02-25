@@ -1,0 +1,51 @@
+{% extends 'Front/base.html.twig' %}
+
+{% block content %}
+<h1 class="title-sub mb-4">Liste des Livres</h1>
+    <section class="branches py-5">
+    {% for cc in list %}
+
+            <div class="row branches-position pt-lg-4">
+                <div class="col-lg-3 col-sm-6 place-w3">
+                    <div class="team-img team-img-1" style="background-image: url('{{ asset('images/' ~ cc.image) }}')" >
+                        <div class="team-content">
+                           <h4 class="text-wh">{{ cc.nom }}</h4>
+                            <p class="team-meta">{{ cc.auteur }}</p>
+
+
+                        </div></div></div></div>
+
+                 <td>
+                     <a class="service-btn mt-4 btn" id="emp" href="{{ path('ReservationLivre',{'idLivre':cc.idLivre}) }}">Empreinter</a>
+                 </td>
+
+        {% for res in reservation %}
+            {% if usr.id == res.idEleve and cc.idLivre == res.idLivre %}
+                <br> {{ 'Livre déja empreinter !!' }}
+            {% endif %}
+        {% endfor %}
+
+            </section>
+
+
+
+    {% endfor %}
+
+    <div class="nav">
+    <td>{{  knp_pagination_render(list) }}</td>
+    <td><a href="http://localhost/Pi-final/web/app_dev.php/biblio/readMyReservation" style="padding-left: 700px">Ma Liste Des Empreints</a></td>
+</div>
+
+
+    <script>
+        $('#emp').click(function () {
+            $.ajax({
+                success: function (data) {
+                    alert('Livre Empreinter');
+                    $('#emp').prop('disabled', true);
+                }
+            });
+        });
+    </script>
+
+{% endblock %}

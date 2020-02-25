@@ -1,0 +1,21 @@
+{% extends 'Back/back.html.twig' %}
+{% block body %}
+    <table class="table table-striped">
+        {{ form_start(form) }}
+        <tr>
+
+            <td>{{ form_label(form.presAbsc) }}</td>
+            <td>{{ form_widget(form.presAbsc) }}</td>
+        </tr>
+        <tr>
+
+
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{ form_widget(form.Ajouter, { 'attr': {'class': 'btn btn-info  '}} ) }}</td>
+
+            {{ form_end(form) }}
+    </table>
+
+{% endblock %}

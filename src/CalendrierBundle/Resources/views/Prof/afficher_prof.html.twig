@@ -1,0 +1,30 @@
+
+{% extends 'Back/back.html.twig' %}
+{% block body %}
+    <br>
+    <br>
+    <br>
+
+<table border="1">
+    <tr>
+
+        <td> nom</td>
+        <td>afficher emploi</td>
+
+
+    </tr>
+
+    {% for ee in e %}
+
+    <tr>
+
+            <td>{{ ee.nom }}</td>
+            <td> <a href={{ path('afficherEmploiNormal',{'id':ee.id} )}}> Afficher Emploi!!</a></td>
+    {% endfor %}
+
+</table>
+    <br>     <br>
+    <br>
+
+
+{% endblock %}

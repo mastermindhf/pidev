@@ -1,0 +1,23 @@
+    <table  class="table table-striped">
+        <h1>Listes des réclamations</h1>
+        <tr><td>Message</td>
+        </tr>
+
+
+        {% for cc in c %}
+            <tr>
+                <td>{{ cc.message}}</td>
+            </tr>
+        {% endfor %}
+    </table><br>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            window.print();
+        });
+
+    </script>

@@ -1,0 +1,22 @@
+{% extends 'Back/backE.html.twig' %}
+{% block body %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <table class="table table-striped">
+        {{ form_start(form) }}
+        <tr>
+
+            <td>{{ form_label(form.libelle) }}</td>
+            <td>{{ form_widget(form.libelle) }}</td>
+            <td>{{ form_errors(form.libelle) }}</td>
+        </tr>
+        <tr>
+
+        <tr>
+            <td></td>
+            <td>{{ form_widget(form.Ajouter, { 'attr': {'class': 'btn btn-info  '}} ) }}</td>
+
+            {{ form_end(form) }}
+    </table>
+
+{% endblock %}

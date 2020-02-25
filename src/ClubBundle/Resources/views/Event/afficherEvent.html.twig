@@ -1,0 +1,28 @@
+{% extends 'Back/back.html.twig' %}
+
+{% block title %}Afficher{% endblock %}
+
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <h1>Event Details</h1>
+
+    <table border="1">
+        <ul>
+            <li>ID Club Organisateur : {{ event.idClub.id }}</li>
+            <li>Nom : {{ event.nom }}</li>
+            <li>Date Début : {{ event.dateDebut | date }}</li>
+            <li>Date Fin : {{ event.dateFin | date }}</li>
+            <li>Nombre de places : {{ event.nbPlaces }}</li>
+            <li>Description : {{ event.description }}</li>
+            <li>Photo : <img src="{{ asset('images/' ~ event.photo) }} "height="100px"></li>
+            <li>
+                <a class="fa fa-undo" href="{{ path('_afficherEvent',{'id':event.id}) }}"> Back</a>
+            </li>
+            <li>
+                <a class="fa fa-share" href="{{ path('_reserver',{'id':event.id}) }}"> Réserver</a>
+            </li>
+        </ul>
+    </table>
+{% endblock %}

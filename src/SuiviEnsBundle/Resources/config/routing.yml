@@ -1,0 +1,23 @@
+suivi_ens_homepage:
+    path:     /
+    defaults: { _controller: SuiviEnsBundle:Default:index }
+suivi_ens:
+    path:     /AjouterSuivi
+    defaults: { _controller: SuiviEnsBundle:SuiviEns:AjouterSuivi }
+affiche_ens:
+    path:     /AfficherSuivi
+    defaults: { _controller: SuiviEnsBundle:SuiviEns:AfficherSuivi }
+Modifier_suivi:
+    path:     /ModifierSuivi/{id}
+    defaults: { _controller: SuiviEnsBundle:SuiviEns:ModifierSuivi }
+Supprimer_suivi:
+    path:     /SupprimerSuivi/{id}
+    defaults: { _controller: SuiviEnsBundle:SuiviEns:SupprimerSuivi }
+SMS:
+    path:     /SMS
+    defaults: { _controller: SuiviEnsBundle:SuiviEns:SMS }
+
+ImpSuiviEns:
+    path:     /imp
+    defaults: { _controller: SuiviEnsBundle:SuiviEns:imp }
+    methods:

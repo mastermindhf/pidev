@@ -1,0 +1,25 @@
+{% extends 'Back/back.html.twig' %}
+{% block body %}
+    <table class="table table-striped">
+        {{ form_start(form) }}
+        
+        <tr>
+
+            <td>{{ form_label(form.presAbsc) }}</td>
+            <td>{{ form_widget(form.presAbsc) }}</td>
+        </tr>
+        <tr>
+
+
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{ form_widget(form.Modifier, { 'attr': {'class': 'btn btn-warning  '}} ) }}</td>
+
+            {{ form_end(form) }}
+    </table>
+<script>
+    $('#form_ens').hide();
+    $('.required').hide();
+</script>
+{% endblock %}
