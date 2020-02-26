@@ -12,6 +12,12 @@ user_parent:
 user_eleve:
   path:     /access/eleve
   defaults: { _controller: UserBundle:Default:eleve}
+user_elevee:
+    path:     /access/elevee/{id}
+    defaults: { _controller: UserBundle:Default:elevee }
+user_elevea:
+    path:     /access/elevea/{id}
+    defaults: { _controller: UserBundle:Default:elevea }
 user_enseignant:
   path:     /access/enseignant
   defaults: { _controller: UserBundle:Default:enseignant }
@@ -28,3 +34,7 @@ session:
 StatIndexBP:
   path:     /access/stat
   defaults: { _controller: BiblioBundle:Livres:StatIndexBP }
+
+_afficherReservation:
+  path:     /AfficheReservation
+  defaults: { _controller: ClubBundle:Reservation:AfficheReservation }

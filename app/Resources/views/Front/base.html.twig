@@ -70,12 +70,13 @@
                             <li><a style="color: deepskyblue" href="{{path('user_eleve')}}"><b>Accueil</b></a></li>
                             <li class="treeview">
                                 <a href="#">
-                                    <span style="color: lightseagreen"><b>Cours & Quiz</b></span>
+                                    <span style="color: lightseagreen"><b>Cours, Quiz et Notes</b></span>
                                     <i style="color: lightseagreen" class="fa fa-angle-down pull-down"></i>
                                 </a>
                                 <ul class="treeview-menu">
                                     <li><a style="color: deeppink" href="{{ path('AfficherFront') }}"> <b>Cours</b></a></li>
                                     <li><a style="color: cornflowerblue" href="{{ path('AfficherQuiz') }}"> <b>Quizz</b></a></li>
+                                    <li><a style="color: #4cae4c" href="{{ path('afficherne2') }}"> <b>Notes</b></a></li>
 
 
                                 </ul>
@@ -95,7 +96,7 @@
                             </li>
                             <li><a style="color: indigo" href="{{ path('afficherClasse') }}"> <b>Mon emploi</b></a></li>
 
-                            <li><a style="color: salmon" href="{{ path('_afficherEventFront') }}"> <b>Clubs</b></a></li>
+                            <li><a style="color: salmon" href="{{ path('AfficheClubFront') }}"> <b>Clubs</b></a></li>
 
 
                             <li ><a style="color: #bd2130"  href="{{path('fos_user_security_logout')}}"><b><u>Déconnexion</u></b></a></li>
@@ -136,6 +137,15 @@
 {% endblock %}
 {% block Cours %}
 {% endblock %}
+{% block event %}
+{% endblock %}
+{% block club %}
+{% endblock %}
+{% block reservation %}
+{% endblock %}
+{% block notes %}
+{% endblock %}
+
 
 {% block footer %}
     <footer class="py-5" id="footer">
@@ -175,7 +185,6 @@
                         </li>
                     </ul>
                 </div>
-                <img src="{{ asset('Front/images/img3.png') }}" alt="" class="img-fluid agents-w3"/>
                 <div class="col-lg-4 footer-grid mt-lg-0 mt-4">
                     <div class="footer-logo">
                         <h2 class="text-lg-center text-center">
@@ -193,7 +202,7 @@
     </footer>
 {% endblock %}
 
-{% block javascript %}
+{% block js %}
 
 {% endblock %}
 </body>

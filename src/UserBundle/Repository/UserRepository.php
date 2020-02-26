@@ -15,9 +15,27 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
 
     }
-    function FindNom($nom){
-        $query=$this->getEntityManager()->createQuery("select e from UserBundle:User e where e.nom LIKE '%$nom%'");
+   function ChercherNom($nom){
+        $query=$this->getEntityManager()->createQuery("select e from UserBundle:User e where e.nom LIKE '%$nom%' and e.roles like :x")
+        ->setParameter('x','%a:1:{i:0;s:5:"ELEVE";}%');
         return $query->getResult();
 
+    }
+    function findEns(){
+        $query=$this->getEntityManager()->createQuery("select e from UserBundle:User e where e.roles like 'a:1:{i:0;s:10:\"ENSEIGNANT\";}' ")
+       ;
+        return $query->getResult();
+
+    }
+    public function findMailEleve(){
+        $query=$this->getEntityManager()->createQuery("select e from UserBundle:User e where e.roles like 'a:1:{i:0;s:10:\"ELEVE\";}' ")
+        ;
+        return $query->getArrayResult();
+
+    }
+    public function ChercherNomEns($x){
+        $query=$this->getEntityManager()->createQuery("select e from UserBundle:User e where e.nom LIKE '%$x%' and e.roles like :a ")
+            ->setParameter('a','%a:1:{i:0;s:10:"ENSEIGNANT";}%');
+        return $query->getResult();
     }
 }

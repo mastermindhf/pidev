@@ -193,24 +193,23 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <li><a href="{{ path('afficher_plat') }}"><i class="fa fa-external-link"></i> Lister Les plats</a></li>
                             </ul>
                         </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-question-circle"></i>
-                                <span>Quizz</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
 
-                        </li>
 
 
                         <li class="treeview">
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-laptop"></i>
-                                <span>Event</span>
+                                <span>Events</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ path('_afficherEvent') }}"><i class="fa fa-angle-right"></i> Afficher Events</a></li>
+                                <li><a href="{{ path('_ajouterEvent') }}"><i class="fa fa-angle-right"></i> Ajouter Events</a></li>
+                                <li><a href="{{ path('calendar') }}"><i class="fa fa-angle-right"></i> Calendrier</a></li>
+                                <li><a href="{{ path('AfficheReservationBack') }}"><i class="fa fa-angle-right"></i> Reservations</a></li>
 
+                            </ul>
                         </li>
                         <li class="treeview">
                             <a href="#">
@@ -257,49 +256,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <div class="profile_details_left"><!--notifications of menu start -->
                 <ul class="nofitications-dropdown">
                     <li class="dropdown head-dpdn">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
-                                    class="fa fa-envelope"></i><span class="badge">0</span></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <div class="notification_header">
-                                    <h3>You have 3 new messages</h3>
-                                </div>
-                            </li>
-                            <li><a href="#">
-                                    <div class="user_img"><img src="{{ asset('Back/images/1.jpg') }}" alt=""></div>
-                                    <div class="notification_desc">
-                                        <p>Lorem ipsum dolor amet</p>
-                                        <p><span>1 hour ago</span></p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </a></li>
-                            <li class="odd"><a href="#">
-                                    <div class="user_img"><img src="{{ asset('Back/images/1.jpg') }}" alt=""></div>
-                                    <div class="notification_desc">
-                                        <p>Lorem ipsum dolor amet </p>
-                                        <p><span>1 hour ago</span></p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </a></li>
-                            <li><a href="#">
-                                    <div class="user_img"><img src="{{ asset('Back/images/1.jpg') }}" alt=""></div>
-                                    <div class="notification_desc">
-                                        <p>Lorem ipsum dolor amet </p>
-                                        <p><span>1 hour ago</span></p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </a></li>
-                            <li><a href="#">
-                                    <div class="user_img"><img src="{{ asset('Back/images/1.jpg') }}" alt=""></div>
-                                    <div class="notification_desc">
-                                        <p>Lorem ipsum dolor amet </p>
-                                        <p><span>1 hour ago</span></p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </a></li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
+                                            class="fa fa-envelope"></i><span class="badge">0</span></a>
+                                <ul class="dropdown-menu">
+
+
+
                             <li>
                                 <div class="notification_bottom">
-                                    <a href="#">See all messages</a>
+                                    <a href="{{ url('fos_message_sent') }}">See all messages</a>
                                 </div>
                             </li>
                         </ul>
@@ -388,18 +353,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class="header-right">
 
 
-            <!--search-box-->
-            <div class="search-box">
-                <form class="input">
-                    <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search"
-                           id="input-31"/>
-                    <label class="input__label" for="input-31">
-                        <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-                            <path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
-                        </svg>
-                    </label>
-                </form>
-            </div><!--//end-search-box-->
+            {% block search %}
+            {% endblock %}
+
 
             <div class="profile_details">
                 <ul>
@@ -408,8 +364,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <div class="profile_img">
                                 <span class="prfil-img"><img src="{{ asset('Back/images/1.jpg') }}" alt=""> </span>
                                 <div class="user-name">
-                                    <p>Admin Name</p>
-                                    <span>Administrator</span>
+
+                                    <span>{{app.user.username}}</span>
                                 </div>
                                 <i class="fa fa-angle-down lnr"></i>
                                 <i class="fa fa-angle-up lnr"></i>
@@ -436,6 +392,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class="main-page">
             {% block body %}
             {% endblock %}
+            {% block js %}
+            {% endblock %}
+
 
         </div>
     </div>

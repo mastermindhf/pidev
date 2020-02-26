@@ -50,3 +50,5 @@ calendrier:
     resource: "@CalendrierBundle/Resources/config/routing.yml"
     prefix:   /calendrier
 
+ancarebeca_fullcalendar:
+    resource: "@FullCalendarBundle/Resources/config/routing.yml"

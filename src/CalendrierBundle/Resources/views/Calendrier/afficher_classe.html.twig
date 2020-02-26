@@ -1,4 +1,4 @@
-{% extends 'Front/home.html.twig' %}
+{% extends 'Front/EhomeE.html.twig' %}
 {% block content %}
     <table border="1">
         <tr>
@@ -9,14 +9,12 @@
 
         </tr>
 
-        {% for ee in e %}
+
         <tr>
 
-            <td>{{ ee.libelle }}</td>
 
-            <td> <a href={{ path('afficherEmploi_classe',{'id':ee.id} )}}> Afficher Emploi!!</a></td>
+            <td> <a href={{ path('afficherEmploi_classe',{'id':e.id} )}}> Afficher Emploi!!</a></td>
 
-            {% endfor %}
 
     </table>
     <br>     <br>

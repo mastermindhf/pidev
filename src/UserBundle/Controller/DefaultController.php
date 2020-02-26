@@ -5,6 +5,9 @@ use CantineBundle\Entity\Notification;
 use UserBundle\Entity\User;
 use CoursBundle\Entity\Cours;
 use CoursBundle\Entity\Wish;
+use ClubBundle\Entity\Club;
+use ClubBundle\Entity\Event;
+use ClubBundle\Entity\Reservation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
@@ -72,7 +75,17 @@ class DefaultController extends Controller
         return $this->render('@User/Default/eleve.html.twig', array('Cours' => $Cours,'u'=>$user,'w'=>$w));
 
     }
+    public function eleveeAction($id)
+    {
+        $eventd=$this->getDoctrine()->getRepository(Event::class)->find(array('id'=>$id));
+        return $this->render('@User/Default/elevee.html.twig' ,array('eventd'=>$eventd));
+    }
 
+    public function eleveaAction($id)
+    {
+        $clubd=$this->getDoctrine()->getRepository(Club::class)->find(array('id'=>$id));
+        return $this->render('@User/Default/elevea.html.twig' ,array('club'=>$clubd));
+    }
 
     public function enseignantAction()
     {    $user = $this->container->get('security.token_storage')->getToken()->getUser()->getNom();

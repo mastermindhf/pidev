@@ -1,34 +1,81 @@
-{% trans_default_domain 'FOSUserBundle' %}
-<form  id="signup-form" class="signup-form" action="{{ path('fos_user_registration_register') }}"  method="POST">
-</div>
-<div class="form-group">
-    {{ form_widget(form.email, { 'attr': {'class': 'form-input', 'placeholder': 'Email','type':'text','name':'name','id':'name' } }) }}
+{% extends 'Front/register.html.twig' %}
+{% block sign %}
+    {% trans_default_domain 'FOSUserBundle' %}
+    <form id="signup-form" class="signup-form" action="{{ path('fos_user_registration_register') }}" method="POST">
 
-</div>
-<div class="form-group">
-    {{ form_widget(form.nom, { 'attr': {'class': 'form-input', 'placeholder': 'Name','type':'text','name':'name','id':'name' } }) }}
+        <table class="table table-hover">
+            <tr style="background-color: whitesmoke">
+                <td align="center"><b>{{ form_label(form.email,'E-Mail') }}</b>
+                </td>
+                <td>    {{ form_widget(form.email, { 'attr': {'class': 'form-control name_list', 'placeholder': 'Email','type':'text','name':'name','id':'name' } }) }}
+                </td>
 
-</div>
-<div class="form-group">
-    {{ form_widget(form.username, { 'attr': {'class': 'form-input', 'placeholder': 'UserName','type':'text','name':'name','id':'name' } }) }}
+            </tr>
 
-</div>
-<div class="form-group">
-    {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-input', 'placeholder': 'Password','type':'text','name':'name','id':'name' } }) }}
 
-</div>
-<div class="form-group">
-    {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-input', 'placeholder': ' Password 2','type':'text','name':'name','id':'name' } }) }}
+            <tr style="background-color: whitesmoke">
+                <td align="center"><b>{{ form_label(form.nom,'Nom') }}</b>
+                </td>
+                <td>    {{ form_widget(form.nom, { 'attr': {'class': 'form-control name_list', 'placeholder': 'Name','type':'text','name':'name','id':'name' } }) }}
+                </td>
+            </tr>
 
-</div>
-    <div class="form-group">
-        {{ form_widget(form.roles, { 'attr': {'class': 'form-input','type':'text','name':'name','id':'name' } }) }}
+            <tr style="background-color: whitesmoke">
+                <td align="center"><b>{{ form_label(form.username,'Pseudo') }}</b>
+                </td>
+                <td>    {{ form_widget(form.username, { 'attr': {'class': 'form-control name_list', 'placeholder': 'UserName','type':'text','name':'name','id':'name' } }) }}
+                </td>
+            </tr>
 
-    </div>
-{{ form_rest(form) }}
 
-<div class="form-group">
-    <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
-</div>
+            <tr style="background-color: whitesmoke">
+                <td align="center"><b>{{ form_label(form.plainPassword.first,'Mot de passe') }}</b>
+                </td>
+                <td>    {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control name_list', 'placeholder': 'Password','type':'text','name':'name','id':'name' } }) }}
+                </td>
+            </tr>
+            <tr style="background-color: whitesmoke">
+                <td align="center"><b>{{ form_label(form.plainPassword.second,'Mot de passe') }}</b>
 
-</form>
+                <td>    {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control name_list', 'placeholder': ' Password 2','type':'text','name':'name','id':'name' } }) }}
+                </td>
+            </tr>
+
+
+            <tr style="background-color: whitesmoke">
+                <td align="center"><b>{{ form_label(form.roles,'Mot de passe') }}</b>
+
+                <td>        {{ form_widget(form.roles, { 'attr': {'class': 'form-control name_list','type':'text','name':'name','id':'name' } }) }}
+                </td>
+            </tr>
+
+
+            <tr style="background-color: whitesmoke">
+                <td><b>Prenom et classe</b></td>
+                <td>{{ form_rest(form) }}
+                </td>
+            </tr>
+
+            <tr style="background-color: whitesmoke">
+               <td></td> <td><input type="submit" name="submit" id="submit" class="btn btn-info" value="Sign up"/>
+                </td>
+            </tr>
+
+        </table>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $('#fos_user_registration_form_classe').prop('disabled',true);
+    $('#fos_user_registration_form_roles').click(function () {
+
+        var x= $('#fos_user_registration_form_roles').val();
+
+        if(x =='Eleve'){
+            $('#fos_user_registration_form_classe').prop('disabled',false);
+            $('#fos_user_registration_form_classe').prop('required',true);
+
+        }
+    })
+
+</script>
+{% endblock %}

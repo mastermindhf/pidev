@@ -12,7 +12,7 @@
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <br> <br>
-<h3 >Emploi du temps de : {{ p.classe.libelle }} </h3>
+
 <table  width="100%"  cellspacing="0" >
     <tr>
 
@@ -23,17 +23,17 @@
         <td bgcolor="#a9a9a9"> vendredi</td>
     </tr>
 
-    {% for ee in e %}
+
 
     <tr >
 
 
         <td bgcolor="#adff2f">
-            {% if ee.jour.id==3%}
+            {% if e.jour.id==3%}
 
 
-                {{ ee.heure.libelle }} <br>
-                salle  {{ ee.classe.libelle }} <br><br><br>
+                {{ e.heure.libelle }} <br>
+                prof  {{ e.prof.nom }} <br><br><br>
 
 
 
@@ -42,35 +42,34 @@
 
 
         <td bgcolor="#ffc0cb">
-            {% if ee.jour.id==4 %}
+            {% if e.jour.id==4 %}
 
-                {{ ee.heure.libelle }} <br>
-                salle  {{ ee.classe.libelle }} <br>
+                {{ e.heure.libelle }} <br>
+                salle  {{ e.classe.libelle }} <br>
             {% endif %}
         </td>
         <td bgcolor="#b0c4de">
-            {% if ee.jour.id==5 %}
+            {% if e.jour.id==5 %}
 
-                {{ ee.heure.libelle }} <br>
-                salle   {{ ee.classe.libelle }} <br>
+                {{ e.heure.libelle }} <br>
+                salle   {{ e.classe.libelle }} <br>
             {% endif %}
         </td>
         <td bgcolor="#f5deb3">
-            {% if ee.jour.id==6 %}
+            {% if e.jour.id==6 %}
 
-                {{ ee.heure.libelle }} <br>
-                salle    {{ ee.classe.libelle }} <br>
+                {{ e.heure.libelle }} <br>
+                salle    {{ e.classe.libelle }} <br>
             {% endif %}
         </td>
         <td bgcolor="#fffacd" >
-            {% if ee.jour.id==7 %}
+            {% if e.jour.id==7 %}
 
-                {{ ee.heure.libelle }} <br>
-                salle   {{ ee.classe.libelle }} <br>
+                {{ e.heure.libelle }} <br>
+                salle   {{ e.classe.libelle }} <br>
             {% endif %}
         </td>
-        {% endfor %}
-    </tr>
+            </tr>
 
 
 </table>
