@@ -1,0 +1,66 @@
+{% extends 'Back/backE.html.twig' %}
+{% block body %}
+    <table class="table table-striped">
+        {{ form_start(form) }}
+        <tr>
+
+            <td>{{ form_label(form.libelle) }}</td>
+            <td>{{ form_widget(form.libelle) }}<span id="misscin" ><ul><li><i class="fa fa-exclamation-triangle"></i>&nbsp; : Le Cours ne doit pas contenir des caractères spéciaux et doit etre composé de 3 caractères au minimum</li></ul> </span></td>
+
+        </tr>
+        <tr>
+
+            <td>{{ form_label(form.matiere) }}</td>
+            <td>{{ form_widget(form.matiere) }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ form_label(form.niveau) }}</td>
+            <td>{{ form_widget(form.niveau) }}<span hidden id="span">error</span></td>
+
+        </tr>
+
+        <tr>
+            <td>{{ form_label(form.contractFile,'Support Du Cours') }}</td>
+
+            <td>{{ form_widget(form.contractFile) }}<span hidden id="span">error</span></td>
+
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>{{ form_widget(form.Ajouter, { 'attr': {'class': 'btn btn-info  '}} ) }}</td>
+
+        {{ form_end(form) }}
+    </table>
+    <script>
+        $(document).ready(function () {
+            $('#misscin').hide();
+            $('#coursbundle_cours_libelle').keyup(function () {
+
+
+
+
+
+                        var re = /^[a-z]{3,}$/i;
+                        var x = $('#coursbundle_cours_libelle').val();
+                        if (re.test(x)) {
+
+                            $('#coursbundle_cours_Ajouter').prop('disabled', false);
+                            $('#misscin').hide();
+                            $('#coursbundle_cours_libelle');
+
+                        } else {
+
+                            $('#misscin').show();
+                            $('#coursbundle_cours_libelle');
+
+
+                            $('#coursbundle_cours_Ajouter').prop('disabled', true);
+                        }
+
+                });
+        })
+            </script>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'Back/back.html.twig' %}
+
+{% block title %}Afficher{% endblock %}
+
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <h1>Clubs List</h1>
+
+    <div class="search-box">
+        <form class="input">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for a club.." title="Type in a name">
+            <label class="input__label" for="input-31">
+                <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                    <path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+                </svg>
+            </label>
+        </form>
+    </div><!--//end-search-box-->
+
+
+    <table class="table table-striped" id="myTable" border="1">
+        <tr class="header">
+            <th>Nom</th>
+            <th>Type</th>
+            <th>Logo</th>
+            <th>Description</th>
+            <th>Num Tél</th>
+            <th>E-mail</th>
+            <th>Chef</th>
+            <th>Delete</th>
+            <th>Update</th>
+            <th>Show</th>
+            <th>Send Mail</th>
+        </tr>
+
+        {% for cc in club %}
+        <tr>
+
+            <td> {{ cc.nom }}</td>
+            <td> {{ cc.type }}</td>
+            <td >
+            <img src="{{ asset('images/' ~ cc.logo) }} "height="100px">
+            </td>
+            <td> {{ cc.description }}</td>
+            <td> {{ cc.numTel }}</td>
+            <td> {{ cc.email }}</td>
+            <td> {{ cc.chef }}</td>
+            <td>
+                <center><a  class="fa fa-trash" href="{{ path('_supprimer',{'id':cc.id}) }}"></a></center>
+            </td>
+            <td>
+                <center>
+                <a class="fa fa-upload" href="{{ path('_modifier',{'id':cc.id}) }}"></a>
+                </center>
+            </td>
+            <td>
+                <center>
+                <a class="fa fa-share" href="{{ path('_afficherC',{'id':cc.id}) }}"></a>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <a class="fa fa-send" href="{{ path('_sendMail',{'id':cc.id}) }}"></a>
+                </center>
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+    <ul>
+        <li><a class="fa fa-plus" href="{{ path('_ajouter') }}"> New Club</a></li>
+    </ul>
+
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+{% endblock %}

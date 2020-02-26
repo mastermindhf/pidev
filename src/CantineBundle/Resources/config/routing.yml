@@ -1,0 +1,75 @@
+cantine_homepage:
+    path:     /
+    defaults: { _controller: CantineBundle:Default:index }
+
+ajouter_plat:
+    path:     /ajouterPlat
+    defaults: { _controller: CantineBundle:Cantine:ajouterPlat }
+
+afficher_plat:
+    path:     /afficherPlat
+    defaults: { _controller: CantineBundle:Cantine:afficherPlat }
+afficher_plat_front:
+    path:     /afficherPlat_front
+    defaults: { _controller: CantineBundle:Cantine:afficherPlat_front }
+topPlat:
+    path:     /topPlat
+    defaults: { _controller: CantineBundle:Cantine:topPlat }
+
+modifier_plat:
+    path:     /modifierPlat{id}
+    defaults: { _controller: CantineBundle:Cantine:modifierPlat }
+
+dislike_plat:
+    path:     /dislikePlat{id}
+    defaults: { _controller: CantineBundle:Cantine:dislikePlat }
+
+supprimer_plat:
+    path:     /supprimerPlat{id}
+    defaults: { _controller: CantineBundle:Cantine:supprimerPlat }
+
+supprimer_menu:
+    path:     /supprimerMenu{id}
+    defaults: { _controller: CantineBundle:Cantine:supprimerMenu }
+
+creer_menu:
+    path:     /creerMenu
+    defaults: { _controller: CantineBundle:Cantine:creerMenu }
+modifier_menu:
+    path:     /modifierMenu{id}
+    defaults: { _controller: CantineBundle:Cantine:modifierMenu }
+
+afficher_menu:
+    path:     /afficherMenu
+    defaults: { _controller: CantineBundle:Cantine:afficherMenu }
+
+traiter_notif:
+    path:     /traiterNotif{plat}
+    defaults: { _controller: CantineBundle:Cantine:traiterNotif }
+
+
+afficherMenuFront:
+    path:     /afficherMenuFront
+    defaults: { _controller: CantineBundle:Cantine:afficherMenuFront }
+
+afficherMenuNormal:
+    path:     /afficherMenuNormal
+    defaults: { _controller: CantineBundle:Cantine:afficherMenuNormal }
+
+calculerCalorie:
+    path:     /calculerCalorie{id}
+    defaults: { _controller: CantineBundle:Cantine:calculerCalorie }
+
+aimer:
+    path:     /aimer{id}
+    defaults: { _controller: CantineBundle:Cantine:aimer }
+
+dislike:
+    path:     /dislike{id}
+    defaults: { _controller: CantineBundle:Cantine:dislike }
+
+mail:
+    path:     /mail
+    defaults: { _controller: CantineBundle:Cantine:mail }
+
+

@@ -1,0 +1,40 @@
+
+<table class="table table-striped">
+    <tr>
+        <th>Nom</th>
+        <th>Auteur</th>
+        <th>Nb d'emprunte</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Users</th>
+
+    </tr>
+
+    {% for cc in livre %}
+    {% if cc.nbpersonnes !=0 %}
+    <tr>
+        <td>{{ cc.nom }}</td>
+        <td>{{ cc.auteur }}</td>
+        <td>{{ cc.nbpersonnes }}</td>
+        <td>{{ cc.description }}</td>
+        <td class="fa-image" height="70px" width="150px" style="background-image: url('{{ asset('images/' ~ cc.image) }}')"></td>
+
+
+
+        <td>
+            {% for res in list %}
+                {% if res.idLivre==cc.idLivre %}
+                    {% for usr in usr %}
+                        {% if usr.id==res.ideleve %}
+                            {{ usr.nom }}
+                         {% endif %}
+                        {% endfor %}
+                {% endif %}
+            {% endfor %}
+
+    </td>
+    </tr>
+
+{% endif %}
+{% endfor %}
+</table>

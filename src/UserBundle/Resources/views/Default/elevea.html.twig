@@ -1,0 +1,15 @@
+{% extends 'Front/base.html.twig' %}
+
+{% block club %}
+    h1>Club Details</h1>
+    <ul>
+        <li>Nom : {{ club.nom }}</li>
+        <li>Type : {{ club.type }}</li>
+        <li >Logo : <img src="{{ asset('image/' ~ club.logo) }} "height="100px"></li>
+        <li>Description : {{ club.description }}</li>
+        <li>Num Tél : {{ club.numTel }}</li>
+        <li>E-mail : {{ club.email }}</li>
+        <li>Chef : {{ club.chef }}</li>
+        <li><a class="fa fa-undo" href="{{ path('AfficheClubFront') }}"> Back</a></li>
+    </ul>
+{% endblock %}

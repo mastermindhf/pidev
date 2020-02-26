@@ -1,0 +1,43 @@
+calendrier_homepage:
+    path:     /
+    defaults: { _controller: CalendrierBundle:Default:index }
+
+creer_emploi:
+    path:     /creerEmploi
+    defaults: { _controller: CalendrierBundle:Calendrier:creerEmploi }
+
+
+ajouterProf:
+    path:     /ajouterProf
+    defaults: { _controller: CalendrierBundle:Prof:ajouterProf }
+afficherProf:
+    path:     /afficherProf
+    defaults: { _controller: CalendrierBundle:Calendrier:afficherProf }
+
+afficherClasse:
+    path:     /afficherClasse
+    defaults: { _controller: CalendrierBundle:Calendrier:afficherClasse }
+
+
+creerEmploi:
+    path:     /creerEmploi
+    defaults: { _controller: CalendrierBundle:Calendrier:creerEmploi }
+
+modifierEmploi:
+    path:     /modifierEmploi{id}
+    defaults: { _controller: CalendrierBundle:Calendrier:modifierEmploi }
+afficherEmploi_classe:
+    path:     /afficherEmploiClasse{id}
+    defaults: { _controller: CalendrierBundle:Calendrier:afficherEmploiClasse }
+
+supprimerEmploi:
+    path:     /supprimerEmploi{id}
+    defaults: { _controller: CalendrierBundle:Calendrier:supprimerEmploi }
+
+afficherEmploi:
+    path:     /afficherEmploi{id}
+    defaults: { _controller: CalendrierBundle:Calendrier:afficherEmploi }
+
+afficherEmploiNormal:
+    path:     /afficherEmploiNormal/{id}
+    defaults: { _controller: CalendrierBundle:Calendrier:afficherEmploiNormal }

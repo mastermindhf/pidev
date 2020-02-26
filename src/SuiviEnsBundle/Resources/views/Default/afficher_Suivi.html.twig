@@ -1,0 +1,135 @@
+{% extends 'Back/back.html.twig' %}
+   {% block search %}
+       <div class="search-box">
+           <form class="input">
+               <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search"
+                      id="input-31"/>
+               <label class="input__label" for="input-31">
+
+               </label>
+           </form>
+       </div>
+
+   {% endblock %}
+{% block body %}
+    <script src="{{ asset('sorttable.js') }}"></script>
+    <table class="table table-striped sortable" id="entitiesNav">
+        <tr align="center"  >
+            <td><b>ID</b></td>
+            <td><b>Enseignant</b></td>
+            <td><b>Date</b></td>
+            <td><b>presenceAbsence</b></td>
+            <td><b>Modifier</b></td>
+            <td><b>Supprimer</b></td>
+
+
+        </tr>
+        {% for c in suiv %}
+            <tr align=" center" >
+                <td>{{c.id}}</td>
+                <td>{{ c.ens.nom }}</td>
+                <td>{{ c.date|date('d,m,y,h') }}</td>
+                <td>{{c.presAbsc}}</td>
+                <td><a href="{{ path('Modifier_suivi',{'id':c.id}) }}"><i class="fa fa-edit" style="color:#2e6da4 " ></i></a></td>
+                <td><a href="{{ path('Supprimer_suivi',{'id':c.id}) }}"><i class="fa fa-trash" style="color: #ff6c5f"></i></a></td>
+
+            </tr>
+        {% endfor %}
+    </table>
+    <table class="table table-striped sortable" id="tbl">
+        <tr align="center"  >
+            <td><b>ID</b></td>
+            <td><b>Enseignant</b></td>
+            <td><b>Date</b></td>
+            <td><b>presenceAbsence</b></td>
+            <td><b>Modifier</b></td>
+            <td><b>Supprimer</b></td>
+
+
+        </tr>
+        {% for c in suiv %}
+            <tr align=" center" >
+                <td>{{c.id}}</td>
+                <td>{{ c.ens.nom }}</td>
+                <td>{{ c.date|date('d,m,y,h') }}</td>
+                <td>{{c.presAbsc}}</td>
+                <td><a href="{{ path('Modifier_suivi',{'id':c.id}) }}"><i class="fa fa-edit" style="color:#2e6da4 " ></i></a></td>
+                <td><a href="{{ path('Supprimer_suivi',{'id':c.id}) }}"><i class="fa fa-trash" style="color: #ff6c5f"></i></a></td>
+
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
+{% block js %}
+
+    <script type="text/javascript">
+        $('#tbl').prop('hidden',true);
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#input-31").keyup(function() {
+                var minlength = 1;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#entitiesNav").html('');
+                if (value.length >= minlength ) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('searchFarouk') }}",
+                        data: {
+                            'q' : value
+                        },
+                        dataType: "text",
+                        success: function(msg){
+
+                            if (value===$(that).val()) {
+                                var result = JSON.parse(msg);
+
+
+                                $.each(result, function(key, arr) {
+                                    $.each(arr, function(id, value) {
+                                        if (key === 'rec') {
+                                            if (id !== 'error') {
+                                                console.log(value[1]);
+                                                entitySelector.append('<table class="table table-striped sortable">'+
+                                                    ' <tr align="center"  >'+
+
+                                                    ' <td><b>Nom</b></td>'+
+                                                    '<td><b>Prenom</b></td>'+
+
+                                                    '<td><b>Modifier</b></td>'+
+
+
+
+                                                    '</tr>'+
+
+                                                    ' <tr align=" center" >'+
+                                                    '<td>'+value[0]+'</td>'+
+                                                    '<td><a>'+value[1]+'</a></td>'+
+                                                    '<td><a href="http://localhost/Pi-final/web/app_dev.php/suivi/ModifierSuivi/'+value[2]+' ">Modifier</a></td>'+
+                                                    //'<td><a href="http://localhost/Pi-final/web/app_dev.php/suivi/SupprimerSuivi/'+value[2]+' ">Supprimer</a></td>'+
+
+                                                    '</table>');
+                                                $('#tbl').prop('hidden',true);
+                                            }else {
+                                                entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                            }
+                                        }
+                                    });
+                                });
+
+
+
+                            }
+                        }
+                    });
+                }
+                else
+                {        $('#tbl').prop('hidden',false);
+                }
+            });
+        });
+    </script>
+{% endblock %}

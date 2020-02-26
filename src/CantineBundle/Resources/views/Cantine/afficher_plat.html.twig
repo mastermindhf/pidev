@@ -1,0 +1,167 @@
+{% extends 'Back/back.html.twig' %}
+
+{% block count %}
+
+    {{ x }}
+{% endblock %}
+
+
+{% block all %}
+    {% for notif in notifs %}
+
+        <li><a href="#">
+                <div class="user_img"><img src="{{ asset('Back/images/1.jpg') }}" alt=""></div>
+                <div class="notification_desc">
+                    <p>{{ notif.user }} a aimé le plat {{ notif.plat }}</p>
+                    <p><span><a href="{{ path('traiter_notif',{'plat':notif.plat.id}) }}">👁‍</i></a></span></p>
+                </div>
+                <div class="clearfix"></div>
+            </a>
+        </li>
+
+    {% endfor %}
+{% endblock %}
+
+
+{% block body %}
+
+    <br> <br>
+    <div class="sidebar-search">
+        <div class="input-group custom-search-form">
+            <input type="text" id="search" class="form-control" placeholder="search...">
+        </div>
+        <!-- /input-group -->
+    </div>
+    <ul class="nav" id="side-menu">
+        <li>
+
+            <ul class="nav nav-second-level" id="entitiesNav">
+            </ul>
+        </li>
+    </ul>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <br> <br>
+    <table class="table table-striped">
+        <tr align="center"  >
+
+            <td><b>libelle</b></td>
+            <td><b>Description</b></td>
+            <td><b>Modifier</b></td>
+            <td><b>Supprimer</b></td>
+            <td><b>nobre de likes</b></td>
+            <td><b>nobre de dislikes</b></td>
+
+
+        </tr>
+        {% for pp in p %}
+            <tr align=" center" >
+
+                <td>{{ pp.libelle }}</td>
+                <td>{{pp.description}}</td>
+                <td><a href="{{ path('modifier_plat',{'id':pp.id}) }}"><i class="fa fa-edit" style="color:#2e6da4 " ></i></a></td>
+                <td><a href="{{ path('supprimer_plat',{'id':pp.id}) }}"><i class="fa fa-trash" style="color: #ff6c5f"></i></a></td>
+
+
+
+
+                <td>{{pp.likes}}</td>
+                <td>{{pp.dislikes}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+    <script>
+        {% for aa in avis %}
+        {% for pp in p %}
+
+        {% if  aa.plat.id==pp.id and u.id==aa.ideleve %}
+        $(document).ready(function() {
+
+
+
+            $('#{{ pp.id }}').hide();
+
+
+
+
+
+        });
+
+
+
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+
+        {% for aa in negatif %}
+        {% for pp in p %}
+
+        {% if  aa.plat.id==pp.id and u.id==aa.ideleve %}
+        $(document).ready(function() {
+
+
+
+            $('#{{ pp.libelle }}').hide();
+
+
+
+
+
+
+        });
+
+
+
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+
+
+
+
+    </script>
+
+
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#search").keyup(function() {
+                var minlength = 3;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#entitiesNav").html('');
+                if (value.length >= minlength ) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('ajax_search') }}",
+                        data: {
+                            'q' : value
+                        },
+                        dataType: "text",
+                        success: function(msg){
+                            //we need to check if the value is the same
+                            if (value==$(that).val()) {
+                                var result = JSON.parse(msg);
+                                $.each(result, function(key, arr) {
+                                    $.each(arr, function(id, value) {
+                                        if (key == 'entities') {
+                                            if (id != 'error') {
+                                                entitySelector.append('<li><a href="/daten/'+id+'">'+value+'</a></li>');
+                                            } else {
+                                                entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                            }
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'Front/accueil.html.twig' %}
+{% block rec %}
+    <table class="table table-hover">
+        <tr style="background-color: salmon">
+            <td align="center"><b>Cours</b></td>
+            <td align="center"><b>Cliquer pour passer le quiz</b></td>
+        </tr>
+{% for q in q  %}
+<tr style="background-color: #00b0f0">
+    <td align="center" ><b >{{ q.libelle }}</b></td>
+    <td align="center" ><b><a style="color: whitesmoke" href="{{ path('_passer_quiz',{'id':q.id}) }}">Passer Le Quiz</a></b></td>
+</tr>
+{% endfor %}
+    </table>
+{% endblock %}

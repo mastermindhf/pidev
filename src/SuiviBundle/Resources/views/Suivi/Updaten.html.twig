@@ -1,0 +1,42 @@
+{% extends 'Back/back.html.twig' %}
+{% block body %}
+    <script src="{{ asset('sorttable.js') }}"></script>
+    <table class="table table-striped ">
+        {{ form_start(form) }}
+        <tr>
+
+            <td>{{ form_label(form.valeur) }}</td>
+            <td>{{ form_widget(form.valeur) }}</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>{{ form_widget(form.Modifier, { 'attr': {'class': 'btn btn-warning  '}} ) }}</td>
+
+            {{ form_end(form) }}
+    </table>
+    <script>
+        $('#form_valeur').keyup(function () {
+
+
+            $.ajax({
+
+                success: function () {
+                    var x=$('#form_valeur').val();
+                    if (x < 0 || x >20  ) {
+                        alert('Note entre 0 et 20');
+
+
+                        $('#form_Modifier').prop('disabled', true);
+
+                    } else {
+
+                        $('#form_Modifier').prop('disabled', false);
+                    }
+                }
+            });
+
+
+        });
+    </script>
+{% endblock %}

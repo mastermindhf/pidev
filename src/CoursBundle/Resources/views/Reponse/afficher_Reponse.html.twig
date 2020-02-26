@@ -1,0 +1,47 @@
+{% extends 'Back/backE.html.twig' %}
+
+{% block body %}
+
+    <table class="table table-striped">
+        {% set i=0 %}
+        <caption>{% for c in Reponse %}
+                {% set array=[ c.question.question] %}
+            {% if i==0 %}
+        {{ array[0] }}
+                {% set i=1 %}
+                {% endif %}
+            {% endfor %}</caption>
+        <tr align="center">
+            <td><b>ID</b></td>
+            <td><b>Reponse</b></td>
+            <td><b>Etat</b></td>
+            <td><b>Cours</b></td>
+
+
+            <td colspan="2"><b>Actions</b></td>
+
+
+        </tr>
+        {% for c in Reponse %}
+
+
+            <tr align=" center">
+
+                <td>{{ c.id }}</td>
+                <td>{{ c.reponse }}</td>
+                <td>{{ c.etat }}</td>
+                <td>{{ c.cours.id }}</td>
+
+
+                <td><a href="{{ path('ModifierQuestion',{'id':c.id}) }}"><i class="fa fa-edit"
+                                                                            style="color:#2e6da4 "></i></a></td>
+                <td><a href="{{ path('SupprimerQuestion',{'id':c.id}) }}"><i class="fa fa-trash"
+                                                                             style="color: #ff6c5f"></i></a></td>
+            </tr>
+
+
+        {% endfor %}
+    </table>
+
+{% endblock %}
+

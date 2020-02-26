@@ -1,0 +1,85 @@
+{% extends 'Front/base.html.twig' %}
+
+{% block search %}
+    <div class="search-box">
+        <form class="input">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for an event.." title="Type in a name">
+            <label class="input__label" for="input-31">
+                <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+
+                </svg>
+            </label>
+        </form>
+    </div><!--//end-search-box--><br>
+{% endblock %}
+
+
+{% block content %}
+<h1>Nos Evénements  </h1>
+    <br>
+    <!--search-box-->
+
+
+    <table class="table table-striped" id="myTable" >
+        <tr class="header">
+
+            <th>Nom</th>
+            <th>ID Club Organisateur</th>
+            <th>Date Début</th>
+            <th>Date Fin</th>
+            <th>Nombre de places</th>
+            <th>Description</th>
+            <th>Photo</th>
+            <th>Show</th>
+            <th>Facebook Share</th>
+            <th>Twitter Share</th>
+        </tr>
+
+        {% for ee in event %}
+        <tr>
+
+            <td> {{ ee.nom }}</td>
+            <td> {{ ee.idClub.id }}</td>
+            <td> {{ ee.dateDebut | date('d/m/yy') }}</td>
+            <td> {{ ee.dateFin | date('d/m/yy') }}</td>
+            <td> {{ ee.nbPlaces }}</td>
+            <td> {{ ee.description }}</td>
+            <td>
+                <img src="{{ asset('images/' ~ ee.photo) }} "height="100px">
+            </td>
+
+            <td>
+
+            </td>
+            <td>
+                <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Flocalhost.dev%2F2a7_php5%2Fview%2Fafficher_wishlist.php&layout=button_count&size=small&width=83&height=20&appId" width="83" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+            </td>
+            <td>
+                <a href="https://twitter.com/share?ref_src=https://www.your-domain.com/your-page.html" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+
+
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,62 @@
+suivi_matiere:
+    resource: "@SuiviBundle/Resources/config/routing/matiere.yml"
+    prefix:   /matiere
+
+suivi_homepage:
+    path:     /
+    defaults: { _controller: SuiviBundle:Default:index }
+afficherc:
+    path:     /AfficherC
+    defaults: { _controller: SuiviBundle:Suivi:AfficherC }
+ajoutla:
+    path:     /AjoutLA/{id}
+    defaults: { _controller: SuiviBundle:Suivi:AjoutLA }
+ajoutp:
+    path:     /AjoutP/{ide}/{idc}
+    defaults: { _controller: SuiviBundle:Suivi:AjoutP }
+ajouta:
+        path:     /AjoutA/{ide}/{idc}
+        defaults: { _controller: SuiviBundle:Suivi:AjoutA }
+affichela:
+    path:     /Affichela/{id}
+    defaults: { _controller: SuiviBundle:Suivi:AfficherLA }
+
+DeleteH:
+    path:   /Delete/{id}
+    defaults: {_controller: SuiviBundle:Suivi:Delete}
+
+UpdateH:
+    path:   /Update/{id}
+    defaults: {_controller: SuiviBundle:Suivi:Update}
+
+ajoutn:
+    path:     /AjoutN/{id}/{idc}
+    defaults: { _controller: SuiviBundle:Note:AjoutN }
+
+affichernc:
+  path:     /Affichernc/{idc}
+  defaults: { _controller: SuiviBundle:Note:Affichernc }
+
+afficherne:
+      path:     /Afficherne/{ide}
+      defaults: { _controller: SuiviBundle:Note:Afficherne }
+
+Deleten:
+    path:   /Deleten/{id}
+    defaults: {_controller: SuiviBundle:Note:Deleten}
+
+Updaten:
+    path:   /Updaten/{id}
+    defaults: {_controller: SuiviBundle:Note:Updaten}
+
+searchHazem:
+  path:     /search
+  defaults: { _controller: SuiviBundle:Suivi:search }
+
+afficherne2:
+  path:     /Afficherne2
+  defaults: { _controller: SuiviBundle:Note:Afficherne2 }
+
+Deletenn:
+  path:   /Deletenn/{id}
+  defaults: {_controller: SuiviBundle:Note:Deletenn}

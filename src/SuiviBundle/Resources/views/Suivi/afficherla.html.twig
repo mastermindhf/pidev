@@ -1,0 +1,37 @@
+{% extends 'Back/back.html.twig' %}
+
+
+{% block body %}
+
+    <script src="{{ asset('sorttable.js') }}"></script>
+<table class="table table-striped sortable" id="entitiesNav">
+    <tr align="center">
+
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Date</th>
+        <th>Etat</th>
+        <th>Supprimer</th>
+        <th>Modifier</th>
+    </tr>
+    {% for cc in la  %}
+        <tr align="center">
+            <td>{{ cc.eleve.nom}}</td>
+            <td>{{ cc.eleve.prenom }}</td>
+            <td>{{ cc.date|date }}</td>
+            <td>{{ cc.etat }}</td>
+            <td><a href="{{ path('DeleteH', {'id': cc.id }) }}"><i class="fa fa-trash" style="color: #ff6c5f"></a></td>
+            <td><a href="{{ path('UpdateH', {'id': cc.id }) }}"><i class="fa fa-edit" style="color:#2e6da4 " ></a></td>
+
+
+
+        </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}
+
+{% block js %}
+
+
+{% endblock %}

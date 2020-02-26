@@ -1,0 +1,81 @@
+{% extends 'Front/base.html.twig' %}
+    {% block content %}
+        <h1 class="title-sub mb-4">Mes Livres réservés</h1>
+        {% for m in list %}
+                {% for l in livre %}
+                    {% if usr.id == m.idEleve and l.idLivre == m.idLivre %}
+                        <div class="col-lg-3 col-sm-6 place-w3">
+                        <td class="team-img">
+                            <img height="300px" width="200px" style="background-image: url('{{ asset('images/' ~ l.image) }}')">
+                        </td><br>
+                        <td class="sub-para">{{ l.nom }}</td><br>
+                        <td class="sub-para">{{ l.auteur }}</td><br>
+                        <td class="sub-para">{{ l.quantite }}</td><br>
+                        <td class="sub-para">{{ l.description }}</td><br>
+                            <td>
+                                <a href="{{ path('like',{'id':l.idLivre}) }}" id="{{ l.idLivre }}">like !</a> <br>
+                                <a   href="{{  path('dislikeL',{'id':l.idLivre}) }}" id="{{ l.nom }}">dislike !</a> <br>
+
+                                <p hidden id="ok"> merci pour votre vote</p>
+                            </td>
+                            <td>
+                                <a class="service-btn mt-4 btn" id="ren" href="{{ path('RendreLivre',{'idLivre':l.idLivre}) }}"> Rendre </a>
+                            </td>
+
+
+                            {% endif %}
+            {% endfor %}
+        {% endfor %}
+                        </div>
+<script>
+             $('#ren').click(function () {
+             $.ajax({
+             success: function (data) {
+             alert('Livre Rendu');
+             $('#ren').prop('disabled', true);
+             }
+        });
+    });
+</script>
+        <script>
+
+            {% for nn in negatif %}
+            {% for l in livre %}
+
+            {% if  nn.livre.idLivre==l.idLivre and usr.id==nn.ideleve %}
+            $(document).ready(function() {
+
+
+
+                $('#{{ l.nom }}').hide();
+
+
+
+
+
+
+            });
+
+
+
+
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+
+
+            {% for aa in avis %}
+            {% for l in livre %}
+
+            {% if  aa.livre.idLivre==l.idLivre and usr.id==aa.ideleve %}
+            $(document).ready(function() {
+
+
+
+                $('#{{ l.idLivre }}').hide();
+            });
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </script>
+    {% endblock %}

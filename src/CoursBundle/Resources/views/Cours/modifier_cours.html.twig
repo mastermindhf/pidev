@@ -1,0 +1,31 @@
+{% extends 'Back/backE.html.twig' %}
+{% block body %}
+    <table class="table table-striped">
+        {{ form_start(form) }}
+        <tr>
+
+            <td>{{ form_label(form.Libelle) }}</td>
+            <td>{{ form_widget(form.Libelle) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.Niveau) }}</td>
+            <td>{{ form_widget(form.Niveau) }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ form_label(form.contractFile,'Support') }}</td>
+            <td>{{ form_widget(form.contractFile) }}</td>
+
+
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{ form_widget(form.Modifier, { 'attr': {'class': 'btn btn-warning  '}} ) }}</td>
+
+            {{ form_end(form) }}
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $('#form_contractFile_delete').html('ko');
+</script>
+{% endblock %}

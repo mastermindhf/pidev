@@ -1,0 +1,22 @@
+{% extends 'Back/back.html.twig' %}
+
+{% block body %}
+    <center>
+        {{ form_start(f) }}
+        {{ form_label(f.subject) }}
+
+        {{ form_widget(f.subject) }}
+        {{ form_label(f.mail) }}
+
+        {{ form_widget(f.mail) }}
+
+        {{ form_label(f.objet) }}
+        {{ form_widget(f.objet) }}
+        {{ form_end(f) }}
+    </center>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        //$('#clubbundle_mail_mail').prop( "disabled", true );
+</script>
+{% endblock %}

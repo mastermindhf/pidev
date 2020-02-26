@@ -1,0 +1,170 @@
+{% extends 'Front/base.html.twig' %}
+
+{% block title %}Afficher{% endblock %}
+
+{% block event %}
+    <br>
+    <br>
+    <br>
+    <h1>Events List</h1>
+
+    <!--search-box-->
+    <div class="search-box">
+        <form class="input">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for an event.." title="Type in a name">
+            <label class="input__label" for="input-31">
+
+            </label>
+        </form>
+    </div><!--//end-search-box-->
+
+    <table id="myTable" border="1">
+        <tr class="header">
+            <th>Nom</th>
+            <th>ID Club Organisateur</th>
+            <th>Date Début</th>
+            <th>Date Fin</th>
+            <th>Nombre de places</th>
+            <th>Description</th>
+            <th>Photo</th>
+            <th>Show</th>
+            <th>Facebook Share</th>
+            <th>Twitter Share</th>
+        </tr>
+
+        {% for ee in event %}
+        <tr>
+
+            <td> {{ ee.nom }}</td>
+            <td> {{ ee.idClub.id }}</td>
+            <td> {{ ee.dateDebut | date('d/m/yy') }}</td>
+            <td> {{ ee.dateFin | date('d/m/yy') }}</td>
+            <td> {{ ee.nbPlaces }}</td>
+            <td> {{ ee.description }}</td>
+            <td>
+                <img src="{{ asset('image/' ~ ee.photo) }} "height="100px">
+            </td>
+            <td>
+                <center>
+                    <a class="fa fa-share" href="{{ path('user_elevee',{'id':ee.id}) }}"></a>
+                </center>
+            </td>
+            <td>
+                <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Flocalhost.dev%2F2a7_php5%2Fview%2Fafficher_wishlist.php&layout=button_count&size=small&width=83&height=20&appId" width="83" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+            </td>
+            <td>
+                <a href="https://twitter.com/share?ref_src=https://www.your-domain.com/your-page.html" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+    <tr>
+        <td>
+            <a class="fa fa-ship" href="{{ path('_afficherReservation') }}">Afficher Réservations</a>
+        </td>
+    </tr>
+
+    <h1>Most Rated Event</h1>
+    <table border="1">
+        <tr>
+            <th>NomEvent</th>
+        </tr>
+        <tr>
+            {% for top in topevent %}
+                <td>{{ top.nom }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+
+
+{% endblock %}
+
+{% block club %}
+    <h1>Clubs List</h1>
+
+    <div class="search-box">
+        <form class="input">
+            <input type="text" id="myInput1" onkeyup="myFunction()" placeholder="Search for a club.." title="Type in a name">
+            <label class="input__label" for="input-31">
+
+            </label>
+        </form>
+    </div><!--//end-search-box-->
+
+    <table id="myTable1" border="1">
+        <tr class="header">
+            <th>Nom</th>
+            <th>Type</th>
+            <th>Logo</th>
+            <th>Description</th>
+            <th>Num Tél</th>
+            <th>E-mail</th>
+            <th>Chef</th>
+            <th>Show</th>
+        </tr>
+
+        {% for cc in club %}
+        <tr>
+
+            <td> {{ cc.nom }}</td>
+            <td> {{ cc.type }}</td>
+            <td >
+                <img src="{{ asset('image/' ~ cc.logo) }} "height="100px">
+            </td>
+            <td> {{ cc.description }}</td>
+            <td> {{ cc.numTel }}</td>
+            <td> {{ cc.email }}</td>
+            <td> {{ cc.chef }}</td>
+            <td>
+                <center>
+                    <a class="fa fa-share" href="{{ path('user_elevea',{'id':cc.id}) }}"></a>
+                </center>
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput1");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable1");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+{% endblock %}
+
+
+

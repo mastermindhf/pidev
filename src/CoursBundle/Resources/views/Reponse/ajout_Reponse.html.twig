@@ -1,0 +1,114 @@
+{% extends 'Back/backE.html.twig' %}
+
+
+
+
+
+{% block body %}
+
+<form name="add_name" id="add_name" action="{{ path('but') }}" method="post">
+
+    <table class="table table-danger" id="dynamic_field">
+
+
+        <tr>
+
+
+            <td><label>Question</label> <label>
+                    <select name="question">
+{% for c in c  %}<option value="{{ c.id }}">{{ c.question }}</option>{% endfor %}
+                    </select>
+                </label>
+        </tr>
+        <tr>
+            <td><input type="text" name="reponse[]" placeholder="Entrer une reponse" class="form-control name_list"
+                       id="input"/></td>
+
+
+            <td><select name="etat[]" class="form-control name_list"
+                        id="input">
+                    <option>Vrai</option>
+                    <option>Faux</option>
+                </select></td>
+            <td>
+                <button type="button" name="add" id="add" class="btn btn-success">Ajouter Reponse</button>
+            </td>
+        </tr>
+
+    </table>
+    <table>
+        <tr>
+
+        </tr>
+    </table>
+    <input type="button" name="submit" id="submit" class="btn btn-info" value="Submit"/>
+
+</form>
+
+
+<script>
+    $(document).ready(function () {
+        var i = 1;
+        $('#add').click(function () {
+            i++;
+            $('#dynamic_field').append('<tr id="row' + i + '"><td><input type="text" name="reponse[]" placeholder="Entrer une reponse" class="form-control name_list" id="input"/></td><td><select name="etat[]" class="form-control name_list"\n' +
+                '                        id="input">\n' +
+                '                    <option>Vrai</option>\n' +
+                '                    <option>Faux</option>\n' +
+                '                </select></td></td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">X</button></td></tr>');
+        });
+
+        $(document).on('click', '.btn_remove', function () {
+            var button_id = $(this).attr("id");
+            $('#row' + button_id + '').remove();
+        });
+
+        $('#submit').click(function () {
+            $.ajax({
+                url: '{{ path('but') }}',
+                method: "POST",
+                data: $('#add_name').serialize(),
+                success: function (data) {
+                    alert('Ajouté avec succes');
+                    $('#add_name')[0].reset();
+                }
+
+            });
+        });
+
+    });
+
+
+    $(document).ready(function () {
+        $('#misscin').hide();
+        $('#q').keyup(function () {
+
+
+            var re = /^[a-zA-Z \t?]{3,}$/i;
+
+            var x = $('#q').val();
+            if (re.test(x)) {
+
+                $('#submit').prop('disabled', false);
+                $('#misscin').hide();
+                $('#q');
+
+            } else {
+
+                $('#misscin').show();
+                $('#q');
+
+
+                $('#submit').prop('disabled', true);
+            }
+
+        });
+    })
+</script>
+
+
+</script>
+{% endblock %}
+
+
+

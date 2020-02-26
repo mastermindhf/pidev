@@ -1,0 +1,93 @@
+AjouterCours:
+  path:     /AjouterCours
+  defaults: { _controller: CoursBundle:Cours:AjouterCours }
+
+AfficherCours:
+  path:     /AfficherCours
+  defaults: { _controller: CoursBundle:Cours:AfficherCours }
+
+ModifierCours:
+  path:     /ModifierCours/{id}
+  defaults: { _controller: CoursBundle:Cours:ModifierCours }
+
+SupprimerCours:
+  path:     /SupprimerCours/{id}
+  defaults: { _controller: CoursBundle:Cours:SupprimerCours }
+
+redirect:
+  path:     /redirect
+  defaults: { _controller: CoursBundle:Cours:redirect }
+
+user_admin:
+  path:     /access/admin
+  defaults: { _controller: UserBundle:Default:admin }
+
+download:
+  path:     /download/{filename}
+  defaults: { _controller: CoursBundle:Cours:download }
+
+
+search:
+  path:     /search
+  defaults: { _controller: CoursBundle:Cours:search }
+Add:
+  path:     /Add/{id}
+  defaults: { _controller: CoursBundle:Cours:Add }
+
+AjouterQuestion:
+  path:    /AjouterQuestion
+  defaults: { _controller: CoursBundle:Question:AjouterQuestion }
+AfficherQuestion:
+  path:    /AfficherQuestion/{id}
+  defaults: { _controller: CoursBundle:Question:AfficherQuestion }
+AfficherQuestionParCours:
+  path:    /AfficherQuestionParCours
+  defaults: { _controller: CoursBundle:Question:AfficherQuestionParCours }
+SupprimerQuestion:
+  path:    /SupprimerQuestion/{id}
+  defaults: { _controller: CoursBundle:Question:SupprimerQuestion }
+
+ModifierQuestion:
+  path:    /ModifierQuestion/{id}
+  defaults: { _controller: CoursBundle:Question:ModifierQuestion }
+
+AjouterReponse:
+  path:    /AjouterReponse
+  defaults: { _controller: CoursBundle:Reponse:AjouterReponse }
+
+AfficherReponse:
+  path:    /AfficherReponse/{id}
+  defaults: { _controller: CoursBundle:Reponse:AfficherReponse }
+SupprimerReponse:
+  path:    /SupprimerReponse/{id}
+  defaults: { _controller: CoursBundle:Reponse:SupprimerReponse }
+
+ModifierReponse:
+  path:    /ModifierReponse/{id}
+  defaults: { _controller: CoursBundle:Reponse:ModifierReponse }
+
+but:
+  path:    /but
+  defaults: { _controller: CoursBundle:Reponse:but }
+
+AfficherReponseParQuestion:
+  path:    /AfficherReponseParQuestion
+  defaults: { _controller: CoursBundle:Reponse:AfficherReponseParQuestion }
+
+_passer_quiz:
+  path:     /PasserQuiz/{id}
+  defaults: { _controller: CoursBundle:Question:PasserQuiz }
+repondre:
+  path:     /Repondre/{id}
+  defaults: { _controller: CoursBundle:Question:Repondre }
+score:
+  path:     /Score
+  defaults: { _controller: CoursBundle:Question:Score }
+
+AfficherFront:
+  path:     /AfficherFront
+  defaults: { _controller: CoursBundle:Cours:AfficherFront }
+
+AfficherQuiz:
+  path:     /AfficherQuiz
+  defaults: { _controller: CoursBundle:Question:AfficherQuiz }

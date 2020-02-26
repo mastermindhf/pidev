@@ -1,0 +1,28 @@
+{% extends 'Back/back.html.twig' %}
+{% block body %}
+    <br> <br>
+menu de la semaine {{ d }} - {{ nw }}
+
+        <br> <br>
+        <h2> Fixer Menu </h2>
+        {{ form_start(f) }}
+
+
+
+
+            {{ form_end(f) }}
+
+    {% if msg!=null %}
+
+        {{ msg }}
+        {{ form_start(f2) }}
+
+
+
+
+        {{ form_end(f2) }}
+
+
+    {% endif %}
+
+{% endblock %}

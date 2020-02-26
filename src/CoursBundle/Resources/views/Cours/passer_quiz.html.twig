@@ -1,0 +1,31 @@
+{% extends 'Front/accueil.html.twig' %}
+{% block rec %}
+
+    <table class="table table-hover">
+    <tr style="background-color: salmon">
+        <td align="center"><b>Question</b></td>
+
+    </tr>
+        {% set i=0 %}
+
+
+        {% for q in q  %}
+            {% set i = i+1 %}
+            <tr style="background-color: #00b0f0">
+
+
+                <td align="center" ><b><a style="color: whitesmoke" href="{{ path('repondre',{'id':q.id}) }}">Question {{ i }} </a></b></td>
+
+
+
+
+
+            </tr>
+
+        {% endfor %}
+    </table>
+
+
+
+
+{% endblock %}

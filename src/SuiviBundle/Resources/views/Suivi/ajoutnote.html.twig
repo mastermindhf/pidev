@@ -1,0 +1,66 @@
+{% extends 'Back/back.html.twig' %}
+{% block body %}
+    <script src="{{ asset('sorttable.js') }}"></script>
+    <table class="table table-striped  ">
+        {{ form_start(form) }}
+        <tr hidden>
+            <td>{{ form_label(form.eleve) }}</td>
+            <td>{{ form_widget(form.eleve) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.valeur) }}</td>
+            <td>{{ form_widget(form.valeur) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.matiere) }}</td>
+            <td>{{ form_widget(form.matiere) }}</td>
+            <span style="color: red">{{ form_errors(form.matiere) }} </span>
+        </tr>
+        <tr>
+
+            <td>{{ form_label(form.captcha) }}</td>
+            <td>{{ form_widget(form.captcha) }}
+
+
+            <span style="color: red">{{ form_errors(form.captcha) }} </span>
+            </td>
+
+
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{ form_widget(form.Ajouter, { 'attr': {'class': 'btn btn-info  '}} ) }}</td>
+
+            {{ form_end(form) }}
+    </table>
+
+
+{% endblock %}
+{% block js %}
+<script>
+
+        $('#form_valeur').keyup(function () {
+
+
+            $.ajax({
+
+                success: function () {
+                    var x = $('#form_valeur').val();
+                    if (x < 0 || x > 20) {
+                        alert('Note entre 0 et 20');
+
+
+                        $('#form_Ajouter').prop('disabled', true);
+
+                    } else {
+
+                        $('#form_Ajouter').prop('disabled', false);
+                    }
+                }
+            });
+
+
+        });
+
+</script>
+{% endblock %}

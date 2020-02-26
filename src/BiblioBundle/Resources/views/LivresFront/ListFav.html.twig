@@ -1,0 +1,35 @@
+
+<table class="table table-striped">
+    <h3 class="title-w3 mb-md-5 mb-sm-4 mb-2 text-center font-weight-bold" style="padding-right: 900px">Vos Meilleures Livres    </h3>
+
+    {% for cc in livre %}
+        {% if cc.likes !=0 %}
+            <tr>
+                <td>
+                    {% for fav in list %}
+                    {% for usr in usr %}
+                        {% if fav.livre.idLivre==cc.idLivre %}
+
+                                {% if usr.id==fav.ideleve %}
+
+                                                    <td class="text-wh">{{ cc.nom }}</td>
+                                                    <td class="team-meta">{{ cc.auteur }}</td>
+
+                <td class="team-meta">{{ cc.likes }}{{ ' Likes' }}</td>
+                            {% endif %}
+
+                        {% endif %}  {% endfor %}
+                    {% endfor %}
+
+
+
+
+
+
+
+
+            </tr>
+        {% else %}
+        {% endif %}
+    {% endfor %}
+</table>

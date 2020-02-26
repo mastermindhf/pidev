@@ -1,0 +1,28 @@
+{% extends 'Front/base.html.twig' %}
+
+{% block title %}Afficher{% endblock %}
+
+{% block event %}
+    <br>
+    <br>
+    <br>
+    <h1>Event Details</h1>
+
+    <table border="1">
+        <ul>
+            <li>ID Club Organisateur : {{ eventd.idClub.id }}</li>
+            <li>Nom : {{ eventd.nom }}</li>
+            <li>Date Début : {{ eventd.dateDebut | date }}</li>
+            <li>Date Fin : {{ eventd.dateFin | date }}</li>
+            <li>Nombre de places : {{ eventd.nbPlaces }}</li>
+            <li>Description : {{ eventd.description }}</li>
+            <li>Photo : <img src="{{ asset('image/' ~ eventd.photo) }} "height="100px"></li>
+            <li>
+                <a class="fa fa-undo" href="{{ path('AfficheClubFront') }}"> Back</a>
+            </li>
+            <li>
+                <a class="fa fa-share" href="{{ path('_reserver',{'id':eventd.id}) }}"> Réserver</a>
+            </li>
+        </ul>
+    </table>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'Back/back.html.twig' %}
+
+{% block title %}Afficher{% endblock %}
+
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <h1>Event Details</h1>
+
+    <table border="1">
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <th>ID Event</th>
+        <th>Nom User</th>
+        <th>Etat</th>
+
+        {% for r in reservation %}
+            <tr>
+                <td>
+                    {{ r.idEvent.id }}
+                </td>
+                <td>
+                    {{ r.idUser.nom }}
+                </td>
+                <td>
+                    {{ r.etat }}
+                </td>
+
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
